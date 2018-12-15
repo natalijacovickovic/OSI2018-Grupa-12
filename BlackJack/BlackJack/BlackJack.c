@@ -9,7 +9,7 @@ void printWelcome()
 
 
 
-void dealCards(CARD *dealerCards, CARD *playerCards)
+void dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 {
 	printf("\nIGRA POCINJE: \n");
 	//CARD dealerCards;                                              //trenutne karte aplikacije
@@ -19,25 +19,33 @@ void dealCards(CARD *dealerCards, CARD *playerCards)
 	playerCards->sumOfCards = playerCards->numOfCards = 0;
 	playerCards->cards = (int)malloc(2 * sizeof(int));
 
-	//inicijalno dijeljenje za aplikaciju
+	//inicijalno dijeljenje za dealera
 
 	dealerCards->cards[0] = rand() % 11 + 1;
+	if (dealerCards->cards[0] == 1)
+		dealerCards->cards[0] = 11;
 	dealerCards->numOfCards++;
 	dealerCards->sumOfCards += dealerCards->cards[0];
 	dealerCards->cards[1] = rand() % 11 + 1;
+	if (dealerCards->cards[1] == 1 && (dealerCards->sumOfCards <= 11))
+		dealerCards->cards[1] = 11;
 	dealerCards->numOfCards++;
-	if (dealerCards->cards[1] == 11) //ako ima zbir 11 ili vise sledeci kec se racuna kao 1
+	if (dealerCards->cards[1] == 11 && (dealerCards->sumOfCards > 11)) //ako ima zbir 11 ili vise sledeci kec se racuna kao 1
 		dealerCards->cards[1] = 1;
 	dealerCards->sumOfCards += dealerCards->cards[1];
 
 	//inicijalno dijeljenje za igraca
 
 	playerCards->cards[0] = rand() % 11 + 1;
+	if (playerCards->cards[0] == 1)
+		playerCards->cards[0] = 11;
 	playerCards->numOfCards++;
 	playerCards->sumOfCards += playerCards->cards[0];
 	playerCards->cards[1] = rand() % 11 + 1;
+	if (playerCards->cards[1] == 1 && (playerCards->sumOfCards <= 11))
+		playerCards->cards[1] = 11;
 	playerCards->numOfCards++;
-	if (playerCards->cards[1] == 11)
+	if (playerCards->cards[1] == 11 && (playerCards->sumOfCards > 11))
 		playerCards->cards[1] = 1;
 	playerCards->sumOfCards += playerCards->cards[1];
 
@@ -117,8 +125,10 @@ void hit(CARD *cards) //funkcija u slucaju kada vucemo sledecu kartu
 	for (int i = 0; i < cards->numOfCards; i++)
 		temp[i] = cards->cards[i];
 	cards->cards = (int)realloc(cards->cards, (cards->numOfCards + 1));      //realokacija broja karata i dodjela vrijednosti sledeceoj karti
-	cards->cards[cards->numOfCards] = rand() % 11 + 1;                        //^
-	if (cards->cards[cards->numOfCards] == 11 && cards->sumOfCards >= 11)
+	cards->cards[cards->numOfCards] = rand() % 11 + 1;                       //^
+	if (cards->cards[cards->numOfCards] == 1)
+		cards->cards[cards->numOfCards] = 11;
+	if (cards->cards[cards->numOfCards] == 11 && cards->sumOfCards > 11)
 		cards->cards[cards->numOfCards] = 1;
 	cards->sumOfCards += cards->cards[cards->numOfCards];
 	for (int i = 0; i < cards->numOfCards; i++)
