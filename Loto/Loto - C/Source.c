@@ -31,6 +31,7 @@ void startLoto()
 			{
 				char chr = getchar();
 				printf("Pogresan unos, pokusajte ponovo.\n");
+				i--;
 			}
 			else if (korisnikoviBrojevi[i] > 45 || korisnikoviBrojevi[i] < 0)
 				printf("Pogresan unos, pokusajte ponovo.\n");
