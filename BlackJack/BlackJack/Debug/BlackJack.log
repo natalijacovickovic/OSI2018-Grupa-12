@@ -1,17 +1,17 @@
 ﻿  BlackJack.c
-c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(16): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(20): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(49): warning C4473: 'printf' : not enough arguments passed for format string
-  c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(49): note: placeholders and their parameters expect 4 variadic arguments, but 3 were provided
-  c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(49): note: the missing variadic argument 4 is required by format string '%d'
-c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(63): warning C4473: 'printf' : not enough arguments passed for format string
-  c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(63): note: placeholders and their parameters expect 4 variadic arguments, but 3 were provided
-  c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(63): note: the missing variadic argument 4 is required by format string '%d'
-c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(104): warning C4101: 'input': unreferenced local variable
-c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(119): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(116): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
+c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(16): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
+c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(20): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
+c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(49): warning C4473: 'printf' : not enough arguments passed for format string
+  c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(49): note: placeholders and their parameters expect 4 variadic arguments, but 3 were provided
+  c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(49): note: the missing variadic argument 4 is required by format string '%d'
+c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(63): warning C4473: 'printf' : not enough arguments passed for format string
+  c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(63): note: placeholders and their parameters expect 4 variadic arguments, but 3 were provided
+  c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(63): note: the missing variadic argument 4 is required by format string '%d'
+c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(104): warning C4101: 'input': unreferenced local variable
+c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(119): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
+c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(116): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
   Source.c
   Generating Code...
-c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(175): warning C4715: 'winnerCheck': not all control paths return a value
-c:\users\stefan\documents\fax\2 godina\programski 1\projects\blackjack\blackjack\blackjack.c(153): warning C4715: 'dealerCardsCheck': not all control paths return a value
-  BlackJack.vcxproj -> C:\Users\Stefan\Documents\FAX\2 Godina\Programski 1\Projects\BlackJack\Debug\BlackJack.exe
+c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(153): warning C4715: 'dealerCardsCheck': not all control paths return a value
+c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(175): warning C4715: 'winnerCheck': not all control paths return a value
+  BlackJack.vcxproj -> C:\Users\Stefan\Documents\GitRepo\BlackJack\Debug\BlackJack.exe

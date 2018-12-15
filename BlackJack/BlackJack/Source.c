@@ -1,8 +1,10 @@
 #include "BlackJack.h"
+#include <time.h>
 
 
 int main()
 {
+	srand((unsigned int)time(0));
 	printWelcome();
 	CARD dealerCards;
 	CARD playerCards;
