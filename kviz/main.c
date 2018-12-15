@@ -91,7 +91,7 @@ void startKviz()
 			   char chr = getchar();
 			if (m > 3 || m < 1)
 				   printf("Pogresan unos, pokusajte ponovo.\n");
-		        else
+		    else
 				   break;
 			
 		} while (m < 1 || m>3);
@@ -108,6 +108,14 @@ void startKviz()
 	if (k == 5)
 		brBodova += 50;
 	printf("Broj osvojenih bodova:%d\n", brBodova);
+	for (int i = 0; i < 16; i++)
+	{
+		for (int j = 0; j < 3; j++)
+			free(kviz[i].odgovori[j]);
+		free(kviz[i].pitanje);
+		free(kviz[i].tacanOdgovor);
+		free(kviz[i].odgovori);
+	}
 }
 
 
