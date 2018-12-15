@@ -6,12 +6,14 @@
 void startLoto();
 void shuffle(int*, int);
 void spinNumbers(int *);
-
+void printHello();
+void animation1();
 
 int main()
 {
 	srand((unsigned int)time(0));
 	startLoto();
+	getchar();
 	return 0;
 }
 
@@ -22,7 +24,8 @@ void startLoto()
 		sviBrojevi[i] = i;
 	shuffle(sviBrojevi, 46);
 	int korisnikoviBrojevi[7];
-	printf("Unesite vase brojeve: ");
+	printHello();
+	int breakPoint = 0;
 	for (int i = 0; i < 7; i++) // ogranicenje unosa samo na brojeve u odgovarajucem opsegu
 	{
 		do
@@ -31,7 +34,12 @@ void startLoto()
 			{
 				char chr = getchar();
 				printf("Pogresan unos, pokusajte ponovo.\n");
-				i--;
+				int uslov = 0;
+				for (int j = 0; j < i; j++)
+					if (korisnikoviBrojevi[j] == korisnikoviBrojevi[i])
+						uslov = 1;
+				if (uslov)
+					i--;
 			}
 			else if (korisnikoviBrojevi[i] > 45 || korisnikoviBrojevi[i] < 0)
 				printf("Pogresan unos, pokusajte ponovo.\n");
@@ -43,7 +51,7 @@ void startLoto()
 						uslov = 1;
 				if (uslov)
 				{
-					printf("Vec ste unijeli dati broj. Pokusajte ponovo.\n");
+					printf("Vec ste unijeli dati broj.\n");
 					i--;
 				}
 			}
@@ -56,23 +64,8 @@ void startLoto()
 	printf("Vasi brojevi su: ");
 	for (int i = 0; i < 7; i++)
 		printf("%d ", korisnikoviBrojevi[i]);
-	printf("\nIzvlacenje pocinje za "); // "animacija"
-	printf("3");
-	Sleep(1000);
-	printf("\b");
-	printf("2");
-	Sleep(1000);
-	printf("\b");
-	printf("1");
-	Sleep(1000);
-	for (int i = 0; i < 50; i++) // ciscenje posljednjeg reda u konzoli
-		printf("\b");
-	for (int i = 0; i < 50; i++)
-		printf(" ");
-	for (int i = 0; i < 51; i++)
-		printf("\b");
-
 	int pronadjeniBrojevi[20];
+	animation1();
 	for (int i = 0; i < 20; i++)
 	{
 		spinNumbers(sviBrojevi); // "animacija"
@@ -90,14 +83,14 @@ void startLoto()
 				brojPogodjenih++;
 				brojBodova += brojPogodjenih * 10;
 			}
-				
+
 		}
 	}
-	printf("\nPogodili ste %d %s i osvojili %d bodova.\n", brojPogodjenih, brojPogodjenih==1 ? "broj" : (brojPogodjenih <5 ? "broja" : "brojeva"), brojBodova);
+	printf("\nPogodili ste %d %s i osvojili %d bodova.\n", brojPogodjenih, brojPogodjenih == 1 ? "broj" : (brojPogodjenih < 5 ? "broja" : "brojeva"), brojBodova);
 }
 
 void shuffle(int *niz, int n) { // nasumicno mijesanje elemenata niza
-	int i;                           
+	int i;
 	for (i = 0; i < n - 1; i++) {
 		size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
 		int t = niz[j];
@@ -121,5 +114,32 @@ void spinNumbers(int *sviBrojevi) // "animacija" promjene brojeva
 			Sleep(55);
 		}
 	}
+}
+
+void printHello()
+{
+	printf("********************\n");
+	printf("*Dobrodosli u loto!*\n");
+	printf("********************\n");
+	printf("Unesite vase brojeve: ");
+}
+
+void animation1()
+{
+	printf("\nIzvlacenje pocinje za "); // "animacija"
+	printf("3");
+	Sleep(1000);
+	printf("\b");
+	printf("2");
+	Sleep(1000);
+	printf("\b");
+	printf("1");
+	Sleep(1000);
+	for (int i = 0; i < 50; i++) // ciscenje posljednjeg reda u konzoli
+		printf("\b");
+	for (int i = 0; i < 50; i++)
+		printf(" ");
+	for (int i = 0; i < 51; i++)
+		printf("\b");
 }
 
