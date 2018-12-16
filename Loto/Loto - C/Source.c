@@ -14,6 +14,7 @@ int main()
 	srand((unsigned int)time(0));
 	startLoto();
 	getchar();
+	getchar();
 	return 0;
 }
 
@@ -118,9 +119,49 @@ void spinNumbers(int *sviBrojevi) // "animacija" promjene brojeva
 
 void printHello()
 {
+	printf("********************\n"); // ispis sa promjenom boje
+	printf("*Dobrodosli u loto!*\n");
+	printf("********************\n");
+	system("color 01");
+	Sleep(500);
+	system("cls");
 	printf("********************\n");
 	printf("*Dobrodosli u loto!*\n");
 	printf("********************\n");
+	system("color 02");
+	Sleep(500);
+	system("cls");
+	printf("********************\n");
+	printf("*Dobrodosli u loto!*\n");
+	printf("********************\n");
+	system("color 03");
+	Sleep(500);
+	system("cls");
+	printf("********************\n");
+	printf("*Dobrodosli u loto!*\n");
+	printf("********************\n");
+	system("color 04");
+	Sleep(500);
+	system("cls");
+	printf("********************\n");
+	printf("*Dobrodosli u loto!*\n");
+	printf("********************\n");
+	system("color 05");
+	Sleep(500);
+	system("cls");
+	printf("********************\n");
+	printf("*Dobrodosli u loto!*\n");
+	printf("********************\n");
+	system("color 0A");
+	Sleep(500);
+	system("cls");
+	printf("********************\n");
+	printf("*Dobrodosli u loto!*\n");
+	printf("********************\n");
+	system("color 0B");
+	Sleep(500);
+	system("color 07");
+
 	printf("Unesite vase brojeve: ");
 }
 
