@@ -1,15 +1,2 @@
-﻿  BlackJack.c
-c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(16): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(20): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(57): warning C4473: 'printf' : not enough arguments passed for format string
-  c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(57): note: placeholders and their parameters expect 4 variadic arguments, but 3 were provided
-  c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(57): note: the missing variadic argument 4 is required by format string '%d'
-c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(71): warning C4473: 'printf' : not enough arguments passed for format string
-  c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(71): note: placeholders and their parameters expect 4 variadic arguments, but 3 were provided
-  c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(71): note: the missing variadic argument 4 is required by format string '%d'
-c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(112): warning C4101: 'input': unreferenced local variable
-c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(127): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(124): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
-c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(163): warning C4715: 'dealerCardsCheck': not all control paths return a value
-c:\users\stefan\documents\gitrepo\blackjack\blackjack\blackjack.c(185): warning C4715: 'winnerCheck': not all control paths return a value
-  BlackJack.vcxproj -> C:\Users\Stefan\Documents\GitRepo\BlackJack\Debug\BlackJack.exe
+﻿  Source.c
+  BlackJack.vcxproj -> C:\Users\Stefan\Documents\GitRepoLocal\BlackJack\Debug\BlackJack.exe

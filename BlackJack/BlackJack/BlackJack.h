@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <Windows.h>
 
 typedef struct Card
 {
@@ -12,8 +13,9 @@ typedef struct Card
 } CARD;
 
 void printWelcome();
+void printMenu();
 int printOptions();
-void dealCards(CARD *, CARD *);
+int dealCards(CARD *, CARD *);
 void printCards(CARD, CARD);
 void printPlayerCards(CARD);
 void printDealerCards(CARD);
