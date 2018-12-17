@@ -3,41 +3,62 @@
 
 int main()
 {
-    time_t t;
-    srand((unsigned)time(&t));
-    int n=rand()%101;
-    int i=1,broj;
-    printf("Pogodite zamisljen broj!\n");
-    while(i<=5)
-    {
-        printf("%d.pokusaj: ",i);
-        scanf("%d",&broj);
-        if(broj>n)
-            {
-                if(i!=5)
-                    printf("Vas broj je veci od trazenog.\n");
-                i++;
-            }
-        else if(broj<n)
-            {
-                if(i!=5)
-                    printf("Vas broj je manji od trazenog.\n");
-                i++;
-            }
-        else if(broj==n)
-            break;
+	int n = rand() % 101;
+	int i = 0, broj;
+	printf("Pogodite zamisljen broj!\n");
+	int donja = 0, gornja = 100;
+	printf("%d\n",n);
+	do
+	{
+	LABEL:;
+		printf("%d.pokusaj: ", i + 1);
+		do
+		{
+			if (scanf_s("%d", &broj) != 1)
+			{
+				getchar();
+				printf("Pogresan unos, pokusajte ponovo.\n");
+				goto LABEL;
+			}
+			else if (broj < 0 || broj>101)
+			{
+				printf("Pogresan unos, pokusajte ponovo.\n");
+				goto LABEL;
+			}
+			else
+				break;
 
-    }
-    if(i<=5)
-    {
-        int bodovi=100/i;
-        if(i==3)
-            bodovi=35;
-        printf("Cestitamo!  Pogodili ste broj!\n");
-        printf("Osvojili ste %d bodova",bodovi);
-    }
-    else
-        printf("Niste pogodili");
+		} while (broj < 0 || broj>101);
 
-    return 0;
+
+		if (i == 4 || broj == n)
+			break;
+		else if (broj > n)
+		{
+			printf("Zamisljeni broj je manji od unesenog.\n");
+			gornja = broj;
+			i++;
+		}
+		else
+		{
+			printf("Zamisljeni broj je veci od unesenog.\n");
+			donja = broj;
+			i++;
+		}
+
+	} while (broj >= donja && broj <= gornja && i != 5);
+
+
+	if (i < 5 && broj == n)
+	{
+		int bodovi = 100 / (i+1);
+		if (i == 2)
+			bodovi = 35;
+		printf("Cestitamo!  Pogodili ste broj!\n");
+		printf("Osvojili ste %d bodova", bodovi);
+	}
+	else
+		printf("Niste pogodili");
+
+	return 0;
 }
