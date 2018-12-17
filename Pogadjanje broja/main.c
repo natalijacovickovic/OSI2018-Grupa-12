@@ -14,7 +14,7 @@ int main()
 		printf("%d.pokusaj: ", i + 1);
 		do
 		{
-			if (scanf_s("%d", &broj) != 1)
+			if (scanf("%d", &broj) != 1)
 			{
 				getchar();
 				printf("Pogresan unos, pokusajte ponovo.\n");
