@@ -5,8 +5,7 @@
 int main()
 {
 	srand((unsigned int)time(0));
-	//printWelcome();
-	printMenu();
+	printWelcome();
 	CARD dealerCards;
 	CARD playerCards;
 	int cardsCheck = 0;
@@ -17,15 +16,16 @@ int main()
 		return 0;
 	}
 	int result, stand = 0;
+	char input;
+	printOptionsHelp();
 	do
 	{
-		do {                        //igrac bira da li ce vuci kartu ili ostaje pri onome sto ima
-			result = printOptions();
-		} while (optionCheck(result) == 0);
+		result = printOptions();
 
 		if (result == 1)
 		{
 			hit(&playerCards);
+			Sleep(1400);
 			printPlayerCards(playerCards);
 		}
 		if (result == 2)
@@ -34,39 +34,38 @@ int main()
 		{
 			printf("\nBUST - SORRY YOU LOSE\n");
 			//skidanje poena.....
-			//result = 3;
 			getchar();
 			getchar();
 			getchar();
 			return 0;
-			//break;
 		}
 	} while (stand != 1);
 
-	//if (result != 3)
-	//{
+	printDealerCards(dealerCards);
+	Sleep(1800);
+	result = dealerCardsCheck(dealerCards);
+	if (result == 1)
+	{
+		getchar();
+		getchar();
+		return 0;
+	}
+	while (dealerCards.sumOfCards <= 16 && dealerCards.sumOfCards <= 21)
+	{
+		hit(&dealerCards);
 		printDealerCards(dealerCards);
-		result = dealerCardsCheck(dealerCards);
-		if (result == 1)
-		{
-			getchar();
-			return 0;
-		}
-		while (dealerCards.sumOfCards <= 16 && dealerCards.sumOfCards <= 21)
-		{
-			hit(&dealerCards);
-			printDealerCards(dealerCards);
-		}
+		Sleep(800);
+	}
 
-		result = dealerCardsCheck(dealerCards);
-		if (result == 1)
-		{
-			getchar();
-			return 0;
-		}
+	result = dealerCardsCheck(dealerCards);
+	if (result == 1)
+	{
+		getchar();
+		getchar();
+		return 0;
+	}
 
-		result = winnerCheck(dealerCards, playerCards);
-	//}
+	result = winnerCheck(dealerCards, playerCards);
 
 	getchar();
 	getchar();

@@ -9,72 +9,32 @@ void printWelcome()
 	printf("***************************\n");
 }
 
-void printMenu()
+void printOptionsHelp()
 {
-	int i = 0;
-	do
-	{
-		switch (i)
-		{
-		case 0:
-			system("COLOR 04");
-			printWelcome();
-			Sleep(800);
-			system("cls");
-			break;
-		case 1:
-			system("COLOR 09");
-			printWelcome();
-			Sleep(800);
-			system("cls");
-			break;
-		case 2:
-			system("COLOR 06");
-			printWelcome();
-			Sleep(800);
-			system("cls");
-			break;
-		case 3:
-			system("COLOR 05");
-			printWelcome();
-			Sleep(800);
-			system("cls");
-			break;
-		case 4:
-			system("COLOR 07");
-			printWelcome();
-			Sleep(800);
-			//system("cls");
-			break;
-		default:
-			break;
-		}
-		i++;
-	} while (i < 5);
+	printf("\n~~~~~~~ PRESS ~~~~~~~~~~\n");
+	printf("<1> TO HIT \n<2> TO STAND \n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 {
 	printf("\nDEALING BEGINS: \n");
+	Sleep(1200);
 	dealerCards->cards = (int)malloc(2 * sizeof(int));              //2 karte su minimalne 
-	dealerCards->numOfCards = dealerCards->sumOfCards = 0;     
-	playerCards->cards = (int)malloc(2 * sizeof(int)); 
+	dealerCards->numOfCards = dealerCards->sumOfCards = 0;
+	playerCards->cards = (int)malloc(2 * sizeof(int));
 	playerCards->sumOfCards = playerCards->numOfCards = 0;
-	
+
 	//inicijalno dijeljenje za dealera
 
 	dealerCards->cards[0] = rand() % 11 + 1;
 	if (dealerCards->cards[0] == 1)
 		dealerCards->cards[0] = 11;
-	//if (dealerCards->cards[0] == 12 || dealerCards->cards[0] == 13 || deaerlCards->cards[0] == 14)
-	//	dealerCards->cards[0] == 10;
 	dealerCards->numOfCards++;
 	dealerCards->sumOfCards += dealerCards->cards[0];
 	dealerCards->cards[1] = rand() % 11 + 1;
 	if (dealerCards->cards[1] == 1 && (dealerCards->sumOfCards <= 11))
 		dealerCards->cards[1] = 11;
-	//else if (dealerCards->cards[1] == 11 && dealerCards->sumOfCards > 11) //ako je 
-	//	dealerCards->cards[1] = 1;
 	dealerCards->numOfCards++;
 	dealerCards->sumOfCards += dealerCards->cards[1];
 
@@ -88,29 +48,11 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 	playerCards->cards[1] = rand() % 11 + 1;
 	if (playerCards->cards[1] == 1 && (playerCards->sumOfCards <= 11))
 		playerCards->cards[1] = 11;
-	//else if (playerCards->cards[1] == 1 && playerCards->sumOfCards > 11)
-	//	playerCards->cards[1] = 1;
 	playerCards->numOfCards++;
 	playerCards->sumOfCards += playerCards->cards[1];
 
 	printCards(*dealerCards, *playerCards);
 
-	if (dealerCards->sumOfCards == 21 && playerCards->sumOfCards != 21)  //provjera za inicijalni black jack dealera ili igraca
-	{
-		printf("DEALER CARDS:\n");
-		printf("%d. %d \n%d. %d\n", 1, dealerCards->cards[0], 2, dealerCards->cards[1]);
-		printf("DEALER GOT A BLACK JACK\n");
-		//oduzimanje poena -100...
-		return 1;
-	}
-	if (playerCards->sumOfCards == 21 && dealerCards->sumOfCards != 21)
-	{
-		printf("DEALER CARDS:\n");
-		printf("%d. %d \n%d. %d\n", 1, dealerCards->cards[0], 2, dealerCards->cards[1]);
-		printf("CONGRATULATIONS YOU GOT BLACK JACK\n");
-		//dodavanje poena +100......
-		return 1;
-	}
 	if (dealerCards->sumOfCards == 21 && playerCards->sumOfCards == 21)
 	{
 		printf("DEALER CARDS:\n");
@@ -134,7 +76,7 @@ void printCards(CARD card1, CARD card2)         //ispis inicijalnih karata
 {
 	printf("\n");
 	printf("DEALER CARDS:\n");
-	printf("%d. %d \n%d. X\n", 1, card1.cards[0], 2);
+	printf("%d. %d \n%d. X\n", 1, card1.cards[0], 2);    //jedna karta djelioca je sakrivena
 	printf("YOUR CARDS: \n");
 	printf("%d. %d \n%d. %d \n", 1, card2.cards[0], 2, card2.cards[1]);
 }
@@ -165,12 +107,28 @@ int optionCheck(int result)
 int printOptions()  //ispis opcija hit or stand
 {
 	char input[20];
-	int result;
-	printf("\n~~~~~~~ PRESS ~~~~~~~~~~\n");
-	printf("<1> TO HIT \n<2> TO STAND \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-
-	scanf("%d", &result);
+	input[0] = '0';
+	input[1] = '\0';
+	int result = 0;
+	printf("PRESS: ");
+	while (result == 0)
+	{
+		scanf("%s", input);
+		if (input[0] != '1' || input[1] != '\0')       //kontrola unosa na smo 1 i 2
+			if (input[0] != '2' || input[1] != '\0')
+			{
+				printf("Pogresan unos, pokusajte ponovo\n");
+				continue;
+			}
+			else
+			{
+				result = 2;
+			}
+		else
+		{
+			result = 1;
+		}
+	}
 	return result;
 }
 

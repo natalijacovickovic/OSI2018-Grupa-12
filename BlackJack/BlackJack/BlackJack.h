@@ -13,7 +13,7 @@ typedef struct Card
 } CARD;
 
 void printWelcome();
-void printMenu();
+void printOptionsHelp();
 int printOptions();
 int dealCards(CARD *, CARD *);
 void printCards(CARD, CARD);
