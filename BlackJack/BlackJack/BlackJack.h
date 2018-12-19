@@ -12,6 +12,8 @@ typedef struct Card
 	int numOfCards;
 } CARD;
 
+void startBlackJack();
+
 void printWelcome();
 void printOptionsHelp();
 int printOptions();
