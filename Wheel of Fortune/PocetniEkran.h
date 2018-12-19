@@ -95,7 +95,7 @@ void cetvrta()
 		name4();
 		countdown4();
 		system("cls");
-		//startBlackjack();
+		startBlackJack();
 	}
 	else
 	{

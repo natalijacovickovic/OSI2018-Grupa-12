@@ -49,7 +49,7 @@ void otkljucaj()
 	
 	if (dat = fopen("Iskoristeni kljucevi.txt", "a")) // otkljucavanje igre i dodavanje kljuca  u
 	{                                                 // iskoristene kljuceve
-		for (int j = 0; j < 7; j++)
+		for (int j = 0; j < 8; j++)
 			if (!strcmp(kljuc, kljucevi[j]))
 			{
 				status[j / 2] = 1;

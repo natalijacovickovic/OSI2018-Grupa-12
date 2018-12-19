@@ -2,7 +2,6 @@
 #include "Libraries.h"
 void startLoto();
 void spinNumbers(int *);
-void printHello();
 void animation1();
 
 void startLoto()

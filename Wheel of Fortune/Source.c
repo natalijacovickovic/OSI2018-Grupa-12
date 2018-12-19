@@ -4,6 +4,7 @@
 #include "Kviz.h"
 #include "Kljucevi.h"
 #include "PocetniEkran.h"
+#include "Blackjack.h"
 #include "Libraries.h"
 
 int brojBodova = 0;

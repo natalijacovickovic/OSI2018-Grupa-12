@@ -4,6 +4,7 @@
 #include <string.h>
 #include <time.h>
 #include <Windows.h>
+#include "Blackjack.h"
 
 
 void shuffle(int *niz, int n) {      // mijesamo niz tako da uvijek
