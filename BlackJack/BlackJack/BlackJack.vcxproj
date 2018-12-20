@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B5DC44F7-B8A3-4977-9F3D-73563F1251D1}</ProjectGuid>
+    <ProjectGuid>{8D800438-C4B5-458E-8FFF-D0FBB52D9C19}</ProjectGuid>
     <RootNamespace>BlackJack</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

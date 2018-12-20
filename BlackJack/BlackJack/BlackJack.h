@@ -7,12 +7,13 @@
 
 typedef struct Card
 {
-	int *cards;
+	//int *cards;
+	int cards[20];
 	int sumOfCards;
 	int numOfCards;
 } CARD;
 
-void startBlackJack();
+int startBlackJack();
 
 void printWelcome();
 void printOptionsHelp();

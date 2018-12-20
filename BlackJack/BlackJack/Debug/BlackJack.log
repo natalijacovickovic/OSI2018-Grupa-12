@@ -1,14 +1,3 @@
 ﻿  BlackJack.c
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(5): warning C4013: 'time' undefined; assuming extern returning int
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(14): warning C4098: 'startBlackJack': 'void' function returning a value
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(38): warning C4098: 'startBlackJack': 'void' function returning a value
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(49): warning C4098: 'startBlackJack': 'void' function returning a value
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(63): warning C4098: 'startBlackJack': 'void' function returning a value
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(17): warning C4101: 'input': unreferenced local variable
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(92): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(94): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(209): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(206): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(240): warning C4715: 'dealerCardsCheck': not all control paths return a value
-c:\users\korisnik\desktop\broj\blackjack\blackjack\blackjack.c(262): warning C4715: 'winnerCheck': not all control paths return a value
-  BlackJack.vcxproj -> C:\Users\Korisnik\Desktop\Broj\BlackJack\Debug\BlackJack.exe
+c:\users\stefan\documents\gitrepolocal\blackjack\blackjack\blackjack.c(5): warning C4013: 'time' undefined; assuming extern returning int
+  BlackJack.vcxproj -> C:\Users\Stefan\Documents\GitRepoLocal\BlackJack\Debug\BlackJack.exe
