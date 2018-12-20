@@ -24,6 +24,6 @@ void printDealerCards(CARD);
 int optionCheck(int);
 
 void hit(CARD *);
-int dealerCardsCheck(CARD);
+int dealerCardsCheck(CARD, CARD);
 
 int winnerCheck(CARD, CARD);

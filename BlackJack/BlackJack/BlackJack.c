@@ -30,7 +30,7 @@ void startBlackJack()
 			break;
 		if (playerCards.sumOfCards > 21)
 		{
-			printf("\nBUST - SORRY YOU LOSE\n");
+			printf("\nBROJ KARATA VECI OD 21. IZGUBILI STE!\n");
 			//skidanje poena.....
 			getchar();
 			getchar();
@@ -41,7 +41,7 @@ void startBlackJack()
 
 	printDealerCards(dealerCards);
 	Sleep(1800);
-	result = dealerCardsCheck(dealerCards);
+	result = dealerCardsCheck(dealerCards, playerCards);
 	if (result == 1)
 	{
 		getchar();
@@ -55,7 +55,7 @@ void startBlackJack()
 		Sleep(800);
 	}
 
-	result = dealerCardsCheck(dealerCards);
+	result = dealerCardsCheck(dealerCards, playerCards);
 	if (result == 1)
 	{
 		getchar();
@@ -71,23 +71,23 @@ void startBlackJack()
 
 void printWelcome()
 {
-	printf("***************************\n");
-	printf("*  WELCOME TO BLACK JACK  *\n");
-	printf("*       GOOD LUCK :)	  *\n");
-	printf("* You have ~~~ Points lef *\n");
-	printf("***************************\n");
+	printf("******************************\n");
+	printf("*  DOBRO DOSLI U BLACK JACK  *\n");
+	printf("*       SRECNO! :)	     *\n");
+	printf("*     Imate ~~~ bodova       *\n");
+	printf("******************************\n");
 }
 
 void printOptionsHelp()
 {
-	printf("\n~~~~~~~ PRESS ~~~~~~~~~~\n");
-	printf("<1> TO HIT \n<2> TO STAND \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	printf("\n~~~~~~~ ODABERITE OPCIJU ~~~~~~~~~~\n");
+	printf("<1> POVUCI JOS JEDNU KARTU \n<2> DALJE \n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 {
-	printf("\nDEALING BEGINS: \n");
+	printf("\nDIJELJENJE POCINJE: \n");
 	Sleep(1200);
 	dealerCards->cards = (int)malloc(2 * sizeof(int));              //2 karte su minimalne 
 	dealerCards->numOfCards = dealerCards->sumOfCards = 0;
@@ -124,17 +124,17 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 
 	if (dealerCards->sumOfCards == 21 && playerCards->sumOfCards == 21)
 	{
-		printf("DEALER CARDS:\n");
+		printf("PROTIVNIKOVE KARTE:\n");
 		printf("%d. %d \n%d. %d\n", 1, dealerCards->cards[0], 2, dealerCards->cards[1]);
-		printf("YOU ARE TIED\n");
+		printf("IZJEDNACENI STE\n");
 		//poeni ostaju na 0
 		return 1;
 	}
 	if (playerCards->sumOfCards > 21 && dealerCards->sumOfCards < 22)
 	{
-		printf("DEALER CARDS:\n");
+		printf("PROTIVNIKOVE KARTE:\n");
 		printf("%d. %d \n%d. %d\n", 1, dealerCards->cards[0], 2, dealerCards->cards[1]);
-		printf("\nBUST - SORRY YOU LOSE\n");
+		printf("\nIZGUBILI STE!\n");
 		//oduzimanje poena -100...
 		return 1;
 	}
@@ -144,22 +144,22 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 void printCards(CARD card1, CARD card2)         //ispis inicijalnih karata
 {
 	printf("\n");
-	printf("DEALER CARDS:\n");
+	printf("PROTIVNIKOVE KARTE:\n");
 	printf("%d. %d \n%d. X\n", 1, card1.cards[0], 2);    //jedna karta djelioca je sakrivena
-	printf("YOUR CARDS: \n");
+	printf("VASE KARTE: \n");
 	printf("%d. %d \n%d. %d \n", 1, card2.cards[0], 2, card2.cards[1]);
 }
 
 void printPlayerCards(CARD cards)         //ispis igracevih karti
 {
-	printf("\nYOUR CARDS: \n");
+	printf("\nVASE KARTE: \n");
 	for (int i = 0; i < cards.numOfCards; i++)
 		printf("%d. %d\n", i + 1, cards.cards[i]);
 }
 
 void printDealerCards(CARD cards)      //dealerove karte
 {
-	printf("DEALER CARDS:\n");
+	printf("PROTIVNIKOVE KARTE:\n");
 	for (int i = 0; i < cards.numOfCards; i++)
 		printf("%d. %d\n", i + 1, cards.cards[i]);
 }
@@ -179,7 +179,7 @@ int printOptions()  //ispis opcija hit or stand
 	input[0] = '0';
 	input[1] = '\0';
 	int result = 0;
-	printf("PRESS: ");
+	printf("ODABRANA OPCIJA: ");
 	while (result == 0)
 	{
 		scanf("%s", input);
@@ -219,19 +219,19 @@ void hit(CARD *cards) //funkcija u slucaju kada vucemo sledecu kartu
 }
 
 
-int dealerCardsCheck(CARD cards)    //provjera dealerovih karata
+int dealerCardsCheck(CARD cards, CARD player)    //provjera dealerovih karata
 {
 	if (cards.sumOfCards > 21)
 	{
-		printf("\nDEALER BUST - CONGRATULATIONS\n");
+		printf("\nPOBIIJEDILI STE! CESTITAMO!\n");
 		//dodjela poena....
 		return 1;
 	}
 
-	if (cards.sumOfCards == 21)
+	if (cards.sumOfCards == 21 && player.sumOfCards != 21)
 	{
 		//stand = 1;
-		printf("\nSORRY, DEALER GOT A BLACK JACK - YOU LOSE\n");
+		printf("\nPROTIVNIK IMA BLACK JACK!  IZGUBILI STE!\n");
 		//skidanje poena.....
 		return 1;
 	}
@@ -243,19 +243,19 @@ int winnerCheck(CARD dealerCards, CARD playerCards)  //provjera pobjednika
 {
 	if (playerCards.sumOfCards > dealerCards.sumOfCards)
 	{
-		printf("\nCONGRATULATIONS YOU WIN\n");
+		printf("\nCESTITAMO! POBIJEDILI STE!\n");
 		//dodjela poena....
 		return 1;
 	}
 	if (playerCards.sumOfCards < dealerCards.sumOfCards)
 	{
-		printf("\nSORRY YOU LOSE\n");
+		printf("\nIZGUBILI STE!\n");
 		//oduzimanje poena....
 		return -1;
 	}
 	if (playerCards.sumOfCards == dealerCards.sumOfCards)
 	{
-		printf("YOU ARE TIED\n");
+		printf("\nIZJEDNACENI STE!\n");
 		//poeni ostaju na istom....
 		return 0;
 	}
