@@ -40,11 +40,6 @@ void upisiBodove(int broj, int redniBroj)
         }
         fclose(dat);
     }
-    for(i=0;i<10;i++)
-    {
-        printf("%d ",niz[i].broj);
-    }
-    printf("\n");
     i=0;
     while(niz[i].broj>broj)
     {
@@ -64,9 +59,6 @@ void upisiBodove(int broj, int redniBroj)
     novi[i]=p;
     for(i+=1; i<10; j++,i++)
         novi[i]=niz[j];
-    for(i=0;i<10;i++)
-        printf("%d ",novi[i].broj);
-    printf("\n\n");
 
     if(dat=fopen(naziv, "w"))
     {
@@ -88,6 +80,22 @@ void upisiBodove(int broj, int redniBroj)
 
 }
 
+void ispisRezultata(int brojIgrice)
+{
+    FILE *dat;
+    int i;
+    char naziv[20]="Rezultati";
+    char b[2];
+    itoa(brojIgrice, b, 10);
+    strcat(naziv,b);
+    strcat(naziv, ".txt");
+    if(dat=fopen(naziv,"r"))
+    {
+        while((i=fgetc(dat))!=EOF)
+        {
+            printf("%c",i);
+        }
+        fclose(dat);
+    }
 
-
-#endif // REZULTATI_H_INCLUDED
+}
