@@ -10,23 +10,22 @@ void name4();
 void countdown4();
 void printPocetni();
 
-
 int meni()
 {
-	if(!uslovKorisnika)
-	  provjeraKorisnika();	
+	if (!uslovKorisnika)
+		provjeraKorisnika();
 	int n;
 	printPocetni();
-		printf("1.Igraj igru\n");
-		printf("2.Unesi kljuc\n");
-		printf("3.Prikaz rezultata\n");
-		printf("4.Sacuvaj rezultate\n");
-		printf("5.Moji kljucevi\n");
-		printf("6.Uputstvo\n");
-		printf("7.Otkazi igru\n");
-		printf("8.Izlaz\n");
-		scanf("%d", &n);
-		return n;
+	printf("1.Igraj igru\n");
+	printf("2.Unesi kljuc\n");
+	printf("3.Prikaz rezultata\n");
+	printf("4.Sacuvaj rezultate\n");
+	printf("5.Moji kljucevi\n");
+	printf("6.Uputstvo\n");
+	printf("7.Otkazi igru\n");
+	printf("8.Izlaz\n");
+	scanf("%d", &n);
+	return n;
 }
 
 void prva()
@@ -34,10 +33,28 @@ void prva()
 	int n = statusIgre(0);
 	if (n)
 	{
-		name1();
-		countdown1();
-		system("cls");
-		startBroj();
+		if (checkDate(0, 1))
+		{
+			FILE *dat;
+			printf("Kljuc je istekao.\n");
+			getchar();
+			getchar();
+			status[0] = 0;
+			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
+			{
+				for (int z = 0; z < 4; z++)
+					fprintf(dat, "%d ", status[z]);
+				fclose(dat);
+			}
+			return;
+		}
+		else
+		{
+			name1();
+			countdown1();
+			system("cls");
+			startBroj();
+		}
 	}
 	else
 	{
@@ -47,17 +64,35 @@ void prva()
 		system("cls");
 		return;
 	}
-	
+
 }
 void druga()
 {
 	int n = statusIgre(1);
 	if (n)
 	{
-		name2();
-		countdown2();
-		system("cls");
-		startKviz();
+		if (checkDate(1, 1))
+		{
+			printf("Kljuc je istekao.\n");
+			status[1] = 0;
+			FILE *dat;
+			getchar();
+			getchar();
+			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
+			{
+				for (int z = 0; z < 4; z++)
+					fprintf(dat, "%d ", status[z]);
+				fclose(dat);
+			}
+			return;
+		}
+		else
+		{
+			name2();
+			countdown2();
+			system("cls");
+			startKviz();
+		}
 	}
 	else
 	{
@@ -73,10 +108,36 @@ void treca()
 	int n = statusIgre(2);
 	if (n)
 	{
-		name3();
-		countdown3();
-		system("cls");
-		startLoto();
+		if (checkDate(2, 24))
+		{
+			printf("Kljuc je istekao.\n");
+			status[2] = 0;
+			getchar();
+			getchar();
+			FILE *dat;
+			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
+			{
+				for (int z = 0; z < 4; z++)
+					fprintf(dat, "%d ", status[z]);
+				fclose(dat);
+			}
+			return;
+		}
+		else
+		{
+			if (brojBodova < 100)
+			{
+				printf("Nemate dovoljno bodova da igrate ovu igru.\n");
+				getchar();
+				getchar();
+				return;
+			}
+				brojBodova -= 100;
+				name3();
+				countdown3();
+				system("cls");
+				startLoto();
+		}
 	}
 	else
 	{
@@ -92,6 +153,14 @@ void cetvrta()
 	int n = statusIgre(3);
 	if (n)
 	{
+		if (brojBodova < 100)
+		{
+			printf("Nemate dovoljno bodova da igrate ovu igru.\n");
+			getchar();
+			getchar();
+			return;
+		}
+		brojBodova -= 100;
 		name4();
 		countdown4();
 		system("cls");
@@ -177,7 +246,7 @@ void name1()
 		}
 		fclose(dat);
 	}
-	Sleep(2000);
+	Sleep(1700);
 	system("cls");
 }
 
@@ -228,7 +297,7 @@ void name2()
 		}
 		fclose(dat);
 	}
-	Sleep(2000);
+	Sleep(1500);
 	system("cls");
 }
 
@@ -279,7 +348,7 @@ void name3()
 		}
 		fclose(dat);
 	}
-	Sleep(2000);
+	Sleep(1500);
 	system("cls");
 }
 
@@ -330,47 +399,48 @@ void name4()
 		}
 		fclose(dat);
 	}
-	Sleep(2000);
+	Sleep(1700);
 	system("cls");
 }
 
 void printPocetni()
 {
+
 	system("cls");
 	system("color 09");
 	printf("---------------------------------------------------------------\n");
 	printf("                      Wheel of Fortune                         \n");
 	printf("---------------------------------------------------------------\n");
-	Sleep(600);
+	Sleep(400);
 	system("cls");
 	system("color 0D");
 	printf("---------------------------------------------------------------\n");
 	printf("                      Wheel of Fortune                         \n");
 	printf("---------------------------------------------------------------\n");
-	Sleep(600);
+	Sleep(400);
 	system("cls");
 	system("color 0E");
 	printf("---------------------------------------------------------------\n");
 	printf("                      Wheel of Fortune                         \n");
 	printf("---------------------------------------------------------------\n");
-	Sleep(600);
+	Sleep(400);
 	system("cls");
 	system("color 0A");
 	printf("---------------------------------------------------------------\n");
 	printf("                      Wheel of Fortune                         \n");
 	printf("---------------------------------------------------------------\n");
-	Sleep(600);
+	Sleep(400);
 	system("cls");
 	system("color 0C");
 	printf("---------------------------------------------------------------\n");
 	printf("                      Wheel of Fortune                         \n");
 	printf("---------------------------------------------------------------\n");
-	Sleep(600);
+	Sleep(400);
 	system("cls");
 	system("color 07");
 	printf("---------------------------------------------------------------\n");
 	printf("                      Wheel of Fortune                         \n");
-	printf("---------------------------------------------------------------\n");	
+	printf("---------------------------------------------------------------\n");
 }
 
 void uputstva()

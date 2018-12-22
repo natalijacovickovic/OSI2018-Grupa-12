@@ -1,5 +1,6 @@
 #pragma once
 #include "Libraries.h"
+#include "Rezultati.h"
 typedef struct Pitanja
 {
 	char *pitanje;
@@ -38,72 +39,76 @@ PITANJA set(char *string1, char *string2, char *string3, char *string4, char *ta
 
 void startKviz()
 {
-	int k = 0;
-	PITANJA kviz[17];
-	int i = 0, j;
-	FILE *dat, *dat2;
-	if ((dat = fopen("pitanja.txt", "r")))
-	{
-		if ((dat2 = fopen("odgovori.txt", "r")))
+		int k = 0;
+		PITANJA kviz[17];
+		int i = 0, j;
+		FILE *dat, *dat2;
+		int bodovi = 0;
+		if ((dat = fopen("pitanja.txt", "r")))
 		{
-			char pitanje[100], odgovor1[100], odgovor2[100], odgovor3[100], odgovor4[100];
-			while ((fgets(pitanje, 100, dat)) != NULL)
+			if ((dat2 = fopen("odgovori.txt", "r")))
 			{
-				fgets(odgovor1, 100, dat);
-				fgets(odgovor2, 100, dat);
-				fgets(odgovor3, 100, dat);
-				fgets(odgovor4, 100, dat2);
-				kviz[i] = set(pitanje, odgovor1, odgovor2, odgovor3, odgovor4);
-				i++;
+				char pitanje[100], odgovor1[100], odgovor2[100], odgovor3[100], odgovor4[100];
+				while ((fgets(pitanje, 100, dat)) != NULL)
+				{
+					fgets(odgovor1, 100, dat);
+					fgets(odgovor2, 100, dat);
+					fgets(odgovor3, 100, dat);
+					fgets(odgovor4, 100, dat2);
+					kviz[i] = set(pitanje, odgovor1, odgovor2, odgovor3, odgovor4);
+					i++;
+				}
 			}
+
 		}
+		int *niz = (int*)malloc(16 * sizeof(int));
+		for (j = 0; j < 16; j++)
+			niz[j] = j;
+		int n = 16;
+		shuffle(niz, n);
 
-	}
-	int *niz = (int*)malloc(16 * sizeof(int));
-	for (j = 0; j < 16; j++)
-		niz[j] = j;
-	int n = 16;
-	shuffle(niz, n);
-
-	for (j = 0; j < 5; j++)
-	{
-		getPitanje(niz[j], kviz);
-		getOdgovori(niz[j], kviz);
-		printf("Vas odgovor je:");
-		int m = 0;
-		do
+		for (j = 0; j < 5; j++)
 		{
-			if (scanf("%d", &m) != 1);
-			char chr = getchar();
-			if (m > 3 || m < 1)
-				printf("Pogresan unos, pokusajte ponovo.\n");
+			getPitanje(niz[j], kviz);
+			getOdgovori(niz[j], kviz);
+			printf("Vas odgovor je:");
+			int m = 0;
+			do
+			{
+				if (scanf("%d", &m) != 1);
+				char chr = getchar();
+				if (m > 3 || m < 1)
+					printf("Pogresan unos, pokusajte ponovo.\n");
+				else
+					break;
+
+			} while (m < 1 || m>3);
+
+			if (strcmp(kviz[niz[j]].tacanOdgovor, kviz[niz[j]].odgovori[m - 1]) == 0)
+			{
+				bodovi += 20;
+				k++;
+			}
 			else
-				break;
-
-		} while (m < 1 || m>3);
-
-		if (strcmp(kviz[niz[j]].tacanOdgovor, kviz[niz[j]].odgovori[m - 1]) == 0)
-		{
-			brojBodova += 20;
-			k++;
+				bodovi -= 30;
+			printf("\n");
 		}
-		else
-			brojBodova -= 30;
-		printf("\n");
-	}
-	if (k == 5)
-		brojBodova += 50;
-	printf("Imate ukupno %d bodova\n", brojBodova);
-	upisiBodove(brojBodova);
-	for (int i = 0; i < 16; i++)
-	{
-		for (int j = 0; j < 3; j++)
-			free(kviz[i].odgovori[j]);
-		free(kviz[i].pitanje);
-		free(kviz[i].tacanOdgovor);
-		free(kviz[i].odgovori);
-	}
-	printf("Pritisnite bilo koji taster za povratak.\n");
-	getchar();
-	system("cls");
+		if (k == 5)
+			bodovi += 50;
+		printf("Osvojili ste %d bodova\n", bodovi);
+		upisiBodoveudat(bodovi, 2);
+		brojBodova += bodovi;
+		printf("Imate ukupno %d bodova\n", brojBodova);
+		upisiBodove(brojBodova);
+		for (int i = 0; i < 16; i++)
+		{
+			for (int j = 0; j < 3; j++)
+				free(kviz[i].odgovori[j]);
+			free(kviz[i].pitanje);
+			free(kviz[i].tacanOdgovor);
+			free(kviz[i].odgovori);
+		}
+		printf("Pritisnite bilo koji taster za povratak.\n");
+		getchar();
+		system("cls");
 }

@@ -2,9 +2,11 @@
 #include "Broj.h"
 #include "Loto.h"
 #include "Kviz.h"
+#include "Blackjack.h"
 #include "Kljucevi.h"
 #include "PocetniEkran.h"
-#include "Blackjack.h"
+#include "TrajanjeKljuceva.h"
+#include "Rezultati.h"
 #include "Libraries.h"
 
 int brojBodova = 0;
@@ -30,7 +32,6 @@ int main()
 		fscanf(dat, "%d", &brojBodova);
 		fclose(dat);
 	}
-	
 	int n;
 	srand((unsigned int)time(0));
 	do {
@@ -46,11 +47,11 @@ int main()
 		}
 		else if (n == 3)
 		{
-			tabela();
+			meniRezultata();
 		}
 		else if (n == 4)
 		{
-			//sacuvaj();
+			cvs();
 		}
 		else if (n == 5)
 		{
@@ -60,6 +61,12 @@ int main()
 		{
 			uputstva();
 		}
+		else if (n == 7)
+		{
+			otkazi();
+		}
+		else
+			break;
 	} while (n != 8);
 	return 0;
 }

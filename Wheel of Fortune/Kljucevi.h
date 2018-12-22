@@ -1,5 +1,6 @@
 #pragma once
 #include "Libraries.h"
+#include "TrajanjeKljuceva.h"
 
 int statusIgre(int i)
 {
@@ -40,20 +41,33 @@ void otkljucaj()
 				getchar();
 				getchar();
 				system("cls");
+				fclose(dat);
 				return;
 			}
 		}
 		fclose(dat);
 	}
-	
-	
+
+
 	if (dat = fopen("Iskoristeni kljucevi.txt", "a")) // otkljucavanje igre i dodavanje kljuca  u
 	{                                                 // iskoristene kljuceve
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 7; j++)
 			if (!strcmp(kljuc, kljucevi[j]))
 			{
 				status[j / 2] = 1;
 				fputs(kljuc, dat);
+				time_t keytime;
+				time(&keytime);
+				FILE *dat2;
+				char vrijeme[15] = "Vrijeme";
+				char brojIgre[2];
+				strcat(vrijeme, _itoa(j / 2, brojIgre, 10));
+				strcat(vrijeme, ".txt");
+				if (dat2 = fopen(vrijeme, "w"))
+				{
+					fprintf(dat2, "%d", keytime);
+					fclose(dat2);
+				}
 				printf("Uspjesno ste otkljucali %d. igru.\n", j / 2 + 1);
 				break;
 			}
@@ -65,7 +79,7 @@ void otkljucaj()
 			fprintf(dat, "%d ", status[z]);
 		fclose(dat);
 	}
-	
+
 	getchar();
 	getchar();
 	system("cls");
@@ -105,7 +119,7 @@ void provjeraKorisnika()
 		printf("Dobijate pocetnih 10 bodova.\n");
 		printf("Da biste igrali 3. i 4. igru, potrebno je uloziti 100 bodova.\n");
 		printf("Za ostale igre nije potreban ulog.\n");
-		printf ("Ako zelite otkljucati igru, izaberite opciju 2.Unesi kljuc.\n");
+		printf("Ako zelite otkljucati igru, izaberite opciju 2.Unesi kljuc.\n");
 		getchar();
 		getchar();
 		system("cls");
@@ -124,3 +138,4 @@ void prikaziKljuceve()
 	getchar();
 	getchar();
 }
+
