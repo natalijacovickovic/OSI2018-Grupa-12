@@ -187,7 +187,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 			strcpy(naziv, "Rezultati");
 		}
 	}
-	if (dat = fopen("Desktop/Rezultati.csv", "w"))
+	if (dat = fopen("Rezultati.csv", "w"))
 	{
 		fprintf(dat, "igra, bodovi, datum\n");
 		for (j = 0; j < 4; j++)

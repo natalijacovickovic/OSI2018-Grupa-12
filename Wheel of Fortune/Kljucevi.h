@@ -10,9 +10,15 @@ void otkljucaj()
 {
 	system("cls");
 	FILE *dat;
-	printf("Unesite kljuc!\n");
 	char* kljuc = (char*)malloc(22);
-	scanf("%s", kljuc);
+	printf("Unesite kljuc!\n");
+LABEL:;
+	do
+	{
+		scanf("%s", kljuc);
+		if (strlen(kljuc) != 19)
+			printf("Greska. Pokusajte ponovo\n");
+	} while (strlen(kljuc) != 19);
 	strcat(kljuc, "\n");
 	char **kljucevi = (char**)malloc(8 * sizeof(char*));
 	for (int i = 0; i < 8; i++)
@@ -69,6 +75,11 @@ void otkljucaj()
 				}
 				printf("Uspjesno ste otkljucali %d. igru.\n", j / 2 + 1);
 				break;
+			}
+			else
+			{
+				printf("Greska. Pokusajte ponovo.\n");
+				goto LABEL;
 			}
 		fclose(dat);
 	}
