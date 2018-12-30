@@ -114,6 +114,7 @@ void animation1()
 		printf("\b");
 	for (int i = 0; i < 50; i++)
 		printf(" ");
-	for (int i = 0; i < 51; i++)
-		printf("\b");
+	//for (int i = 0; i < 51; i++)
+		//printf("\b");
+	printf("\n");
 }
