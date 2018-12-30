@@ -53,10 +53,11 @@ LABEL:;
 		fclose(dat);
 	}
 
-
+	int uslov = 0; // provjera uslova za postojeci kljuc
 	if (dat = fopen("Iskoristeni kljucevi.txt", "a")) // otkljucavanje igre, dodavanje kljuca  u
 	{                                                 // iskoristene kljuceve i pamcenje vremena unosa kljuca
 		for (int j = 0; j < 8; j++)
+		{
 			if (!strcmp(kljuc, kljucevi[j]))
 			{
 				status[j / 2] = 1;
@@ -73,14 +74,19 @@ LABEL:;
 					fprintf(dat2, "%d", keytime);
 					fclose(dat2);
 				}
+				uslov = 1; // ako pronadje bilo koji kljuc, oslov postavlja na 1
 				printf("Uspjesno ste otkljucali %d. igru.\n", j / 2 + 1);
 				break;
 			}
-			else
-			{
-				printf("Greska. Pokusajte ponovo.\n");
-				goto LABEL;
-			}
+		}
+		if (!uslov) // ako nije pronasao nijedan kljuc u datoteci
+		{
+			printf("Nevazeci kljuc.\n");
+			printOut();
+			system("cls");
+			return;
+		}
+
 		fclose(dat);
 	}
 	if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
