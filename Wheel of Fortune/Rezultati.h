@@ -1,4 +1,6 @@
-#pragma once
+#ifndef REZULTATI_H_INCLUDED
+#define REZULTATI_H_INCLUDED
+
 #include "Libraries.h"
 
 typedef struct podatak
@@ -84,7 +86,7 @@ void upisiBodoveudat(int broj, int redniBroj) // upisivanje bodova u datoteke
 	char pom[150];
 	char naziv[20] = "Rezultati";
 	char b[2];
-	_itoa(redniBroj, b, 10);
+	itoa(redniBroj, b, 10);
 	strcat(naziv, b);
 	strcat(naziv, ".txt");
 	if (dat = fopen(naziv, "r"))
@@ -107,6 +109,13 @@ void upisiBodoveudat(int broj, int redniBroj) // upisivanje bodova u datoteke
 		j++;
 		i++;
 	}
+	if(niz[i].broj==0 && niz[i].vrijeme.tm_mday!=0 && broj<0)
+        {
+            novi[i]=niz[i];
+            j++;
+            i++;
+        }
+
 	PODATAK p;
 	p.broj = broj;
 	time_t rawtime;
@@ -164,7 +173,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 	PODATAK niz[40] = { 0 };
 	FILE *dat;
 	char *pom = (char*)malloc(500);
-	
+
 	for (j = 0; j < 4; j++)
 	{
 		char naziv[20] = "Rezultati";
@@ -192,7 +201,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 		fprintf(dat, "igra, bodovi, datum\n");
 		for (j = 0; j < 4; j++)
 		{
-			
+
 			for (i = j * 10; (i < (j * 10) + 10) && niz[i].vrijeme.tm_mday!=0; i++)
 			{
 				fprintf(dat, "%s,", ime[j]);
@@ -210,7 +219,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 }
 
 
- meniRezultata()
+ void meniRezultata()
 {
 	 system("cls");
 	 printf("Izaberite za koju igru zelite vidjeti rezultate.\n");
@@ -224,3 +233,5 @@ void cvs() // cuvanje rezultata u .csv fajlu
 	 printOut();
 }
 
+
+#endif // REZULTATI_H_INCLUDED
