@@ -1,4 +1,6 @@
-#pragma once
+#ifndef KVIZ_H_INCLUDED
+#define KVIZ_H_INCLUDED
+
 #include "Libraries.h"
 #include "Rezultati.h"
 typedef struct Pitanja
@@ -99,9 +101,20 @@ void startKviz()
 		upisiBodoveudat(bodovi, 2);
 		brojBodova += bodovi;
 		upisiBodove(brojBodova);
-		for (int i = 0; i < 16; i++)
+		if(bodovi<0)
+        {
+            izgubljeno+=abs(bodovi);
+            upisiIzgubljeno(izgubljeno);
+        }
+
+        else
+        {
+            dobijeno+=bodovi;
+            upisiDobijeno(dobijeno);
+        }
+		for (i = 0; i < 16; i++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (j = 0; j < 3; j++)
 				free(kviz[i].odgovori[j]);
 			free(kviz[i].pitanje);
 			free(kviz[i].tacanOdgovor);
@@ -111,3 +124,6 @@ void startKviz()
 		printOut();
 		system("cls"); // cistimo konzolu
 }
+
+
+#endif // KVIZ_H_INCLUDED
