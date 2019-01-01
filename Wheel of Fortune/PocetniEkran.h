@@ -1,4 +1,6 @@
-#pragma once
+#ifndef POCETNIEKRAN_H_INCLUDED
+#define POCETNIEKRAN_H_INCLUDED
+
 #include "Libraries.h"
 void name1();
 void countdown1();
@@ -35,13 +37,14 @@ void prva() // provjera i pokretanje 1. igre
 	{
 		if (checkDate(0, 1))
 		{
+		    int z;
 			FILE *dat;
 			printf("Kljuc je istekao.\n");
 			printOut();
 			status[0] = 0;
 			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
 			{
-				for (int z = 0; z < 4; z++)
+				for (z = 0; z < 4; z++)
 					fprintf(dat, "%d ", status[z]);
 				fclose(dat);
 			}
@@ -77,7 +80,8 @@ void druga() // // provjera i pokretanje 2. igre
 			printOut();
 			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
 			{
-				for (int z = 0; z < 4; z++)
+			    int z;
+				for (z = 0; z < 4; z++)
 					fprintf(dat, "%d ", status[z]);
 				fclose(dat);
 			}
@@ -112,7 +116,8 @@ void treca() // // provjera i pokretanje 3. igre
 			FILE *dat;
 			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
 			{
-				for (int z = 0; z < 4; z++)
+			    int z;
+				for (z = 0; z < 4; z++)
 					fprintf(dat, "%d ", status[z]);
 				fclose(dat);
 			}
@@ -126,6 +131,8 @@ void treca() // // provjera i pokretanje 3. igre
 				printOut();
 				return;
 			}
+                izgubljeno+=100;
+                upisiIzgubljeno(izgubljeno);
 				brojBodova -= 100;
 				name3();
 				countdown3();
@@ -152,6 +159,8 @@ void cetvrta() // provjera i pokretanje 4. igre
 			printOut();
 			return;
 		}
+		izgubljeno+=100;
+		upisiIzgubljeno(izgubljeno);
 		brojBodova -= 100;
 		name4();
 		countdown4();
@@ -444,3 +453,6 @@ void uputstva()
 	system("cls");
 	return;
 }
+
+#endif // POCETNIEKRAN_H_INCLUDED
+
