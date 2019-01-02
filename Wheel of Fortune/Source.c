@@ -13,14 +13,18 @@ int brojBodova = 0;
 int status[4] = { 0, 0, 0, 0 };
 int brojIgranja = 0;
 int uslovKorisnika = 0;
+int dobijeno = 0;
+int izgubljeno = 0;
 
 int main()
 {
 	int i = 0;
 	FILE *dat;
 	if (dat = fopen("Broj igranja.txt", "r"))
+	{
 		fscanf(dat, "%d", &brojIgranja);
-	fclose(dat);
+		fclose(dat);
+	}
 	if (dat = fopen("Status.txt", "r"))
 	{
 		while (fscanf(dat, "%d", &status[i]) != EOF)
@@ -30,6 +34,16 @@ int main()
 	if (dat = fopen("Bodovi.txt", "r"))
 	{
 		fscanf(dat, "%d", &brojBodova);
+		fclose(dat);
+	}
+	if (dat = fopen("Dobijeno.txt", "r"))
+	{
+		fscanf(dat, "%d", &dobijeno);
+		fclose(dat);
+	}
+	if (dat = fopen("Izgubljeno.txt", "r"))
+	{
+		fscanf(dat, "%d", &izgubljeno);
 		fclose(dat);
 	}
 	int n;
@@ -65,7 +79,7 @@ int main()
 		{
 			otkazi();
 		}
-		else
+		else if (n == 8)
 			break;
 	} while (n != 8);
 	return 0;

@@ -1,6 +1,4 @@
-#ifndef REZULTATI_H_INCLUDED
-#define REZULTATI_H_INCLUDED
-
+#pragma once
 #include "Libraries.h"
 
 typedef struct podatak
@@ -77,7 +75,7 @@ void upis(FILE *dat, PODATAK *novi, int n) // cuvanje rezultata u datotekama i n
 
 
 void upisiBodoveudat(int broj, int redniBroj) // upisivanje bodova u datoteke
-{
+ {
 	char r[9] = "Rezultat";
 	int i, j = 0;
 	PODATAK niz[10] = { 0 };
@@ -86,7 +84,7 @@ void upisiBodoveudat(int broj, int redniBroj) // upisivanje bodova u datoteke
 	char pom[150];
 	char naziv[20] = "Rezultati";
 	char b[2];
-	itoa(redniBroj, b, 10);
+	_itoa(redniBroj, b, 10);
 	strcat(naziv, b);
 	strcat(naziv, ".txt");
 	if (dat = fopen(naziv, "r"))
@@ -109,26 +107,27 @@ void upisiBodoveudat(int broj, int redniBroj) // upisivanje bodova u datoteke
 		j++;
 		i++;
 	}
-	if(niz[i].broj==0 && niz[i].vrijeme.tm_mday!=0 && broj<0)
-        {
-            novi[i]=niz[i];
-            j++;
-            i++;
-        }
-
-	PODATAK p;
-	p.broj = broj;
-	time_t rawtime;
-	struct tm* timeinfo;
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	p.vrijeme = *timeinfo;
-	p.vrijeme.tm_mon = p.vrijeme.tm_mon + 1;
-	p.vrijeme.tm_year = p.vrijeme.tm_year + 1900;
-	novi[i] = p;
-	for (i += 1; i < 10; j++, i++)
-		novi[i] = niz[j];
-
+	while (niz[i].broj == 0 && niz[i].vrijeme.tm_mday != 0 && broj < 0)
+	{
+		novi[i] = niz[i];
+		j++;
+		i++;
+	}
+	if (i != 10)
+	{
+		PODATAK p;
+		p.broj = broj;
+		time_t rawtime;
+		struct tm* timeinfo;
+		time(&rawtime);
+		timeinfo = localtime(&rawtime);
+		p.vrijeme = *timeinfo;
+		p.vrijeme.tm_mon = p.vrijeme.tm_mon + 1;
+		p.vrijeme.tm_year = p.vrijeme.tm_year + 1900;
+		novi[i] = p;
+		for (i += 1; i < 10; j++, i++)
+			novi[i] = niz[j];
+	}
 	if (dat = fopen(naziv, "w"))
 	{
 		header(dat, redniBroj);
@@ -173,7 +172,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 	PODATAK niz[40] = { 0 };
 	FILE *dat;
 	char *pom = (char*)malloc(500);
-
+	
 	for (j = 0; j < 4; j++)
 	{
 		char naziv[20] = "Rezultati";
@@ -201,7 +200,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 		fprintf(dat, "igra, bodovi, datum\n");
 		for (j = 0; j < 4; j++)
 		{
-
+			
 			for (i = j * 10; (i < (j * 10) + 10) && niz[i].vrijeme.tm_mday!=0; i++)
 			{
 				fprintf(dat, "%s,", ime[j]);
@@ -219,7 +218,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 }
 
 
- void meniRezultata()
+ meniRezultata()
 {
 	 system("cls");
 	 printf("Izaberite za koju igru zelite vidjeti rezultate.\n");
@@ -233,5 +232,3 @@ void cvs() // cuvanje rezultata u .csv fajlu
 	 printOut();
 }
 
-
-#endif // REZULTATI_H_INCLUDED

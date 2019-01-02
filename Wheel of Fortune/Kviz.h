@@ -77,9 +77,15 @@ void startKviz()
 			int m = 0;
 			do // ogranicenje unosa
 			{
-				if (scanf("%d", &m) != 1);
-				char chr = getchar();
-				if (m > 3 || m < 1)
+			START:;
+				if (scanf("%d", &m) != 1)
+				{
+					char pom[20];
+					fgets(pom, 20, stdin);
+					printf("Pogresan unos, pokusajte ponovo.\n");
+					goto START;
+				}
+				else if (m > 3 || m < 1)
 					printf("Pogresan unos, pokusajte ponovo.\n");
 				else
 					break;
@@ -121,7 +127,8 @@ void startKviz()
 			free(kviz[i].odgovori);
 		}
 		printf("Imate ukupno %d bodova\n", brojBodova);
-		printOut();
+		printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+		getchar();
 		system("cls"); // cistimo konzolu
 }
 

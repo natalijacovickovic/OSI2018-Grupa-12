@@ -4,6 +4,7 @@
 #include <string.h>
 #include <time.h>
 #include <Windows.h>
+#include <math.h>
 
 
 void shuffle(int *niz, int n) {      // mijesamo niz tako da uvijek
@@ -16,6 +17,8 @@ void shuffle(int *niz, int n) {      // mijesamo niz tako da uvijek
 	}
 }
 
+extern int dobijeno;
+extern int izgubljeno;
 extern int brojBodova;
 extern int status[4]; // status igara (zakljucane/otkljucane)
 extern int brojIgranja; // broj igranja prve igre

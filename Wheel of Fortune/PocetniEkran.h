@@ -16,7 +16,6 @@ int meni() // pocetni meni gdje korisnik bira opcije
 {
 	if (!uslovKorisnika)
 		provjeraKorisnika();
-	int n;
 	printPocetni();
 	printf("1.Igraj igru\n");
 	printf("2.Unesi kljuc\n");
@@ -26,7 +25,20 @@ int meni() // pocetni meni gdje korisnik bira opcije
 	printf("6.Uputstvo\n");
 	printf("7.Otkazi igru\n");
 	printf("8.Izlaz\n");
-	scanf("%d", &n);
+	int n = 0;
+	do
+	{
+	START:;
+		if (scanf("%d", &n) != 1)
+		{
+			char pom[20];
+			fgets(pom, 20, stdin);
+			printf("Pogresan unos. Pokusajte ponovo.\n");
+			goto START;
+		}
+		else if (n > 8 || n<1)
+			printf("Nepoznata komanda.\n");
+	} while (n < 1 || n>8);
 	return n;
 }
 
@@ -37,7 +49,7 @@ void prva() // provjera i pokretanje 1. igre
 	{
 		if (checkDate(0, 1))
 		{
-		    int z;
+			int z;
 			FILE *dat;
 			printf("Kljuc je istekao.\n");
 			printOut();
@@ -80,7 +92,7 @@ void druga() // // provjera i pokretanje 2. igre
 			printOut();
 			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
 			{
-			    int z;
+				int z;
 				for (z = 0; z < 4; z++)
 					fprintf(dat, "%d ", status[z]);
 				fclose(dat);
@@ -116,7 +128,7 @@ void treca() // // provjera i pokretanje 3. igre
 			FILE *dat;
 			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
 			{
-			    int z;
+				int z;
 				for (z = 0; z < 4; z++)
 					fprintf(dat, "%d ", status[z]);
 				fclose(dat);
@@ -131,13 +143,13 @@ void treca() // // provjera i pokretanje 3. igre
 				printOut();
 				return;
 			}
-                izgubljeno+=100;
-                upisiIzgubljeno(izgubljeno);
-				brojBodova -= 100;
-				name3();
-				countdown3();
-				system("cls");
-				startLoto();
+			izgubljeno += 100;
+			upisiIzgubljeno(izgubljeno);
+			brojBodova -= 100;
+			name3();
+			countdown3();
+			system("cls");
+			startLoto();
 		}
 	}
 	else
@@ -159,7 +171,7 @@ void cetvrta() // provjera i pokretanje 4. igre
 			printOut();
 			return;
 		}
-		izgubljeno+=100;
+		izgubljeno += 100;
 		upisiIzgubljeno(izgubljeno);
 		brojBodova -= 100;
 		name4();

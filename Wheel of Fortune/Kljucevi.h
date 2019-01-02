@@ -74,7 +74,7 @@ LABEL:;
 					fprintf(dat2, "%d", keytime);
 					fclose(dat2);
 				}
-				uslov = 1; // ako pronadje bilo koji kljuc, oslov postavlja na 1
+				uslov = 1; // ako pronadje bilo koji kljuc, uslov postavlja na 1
 				printf("Uspjesno ste otkljucali %d. igru.\n", j / 2 + 1);
 				break;
 			}

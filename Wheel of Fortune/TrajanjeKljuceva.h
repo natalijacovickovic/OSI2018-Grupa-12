@@ -32,8 +32,20 @@ void otkazi()
 	printf("2. Kviz\n");
 	printf("3. Loto\n");
 	printf("4. BlackJack\n");
-	int n;
-	scanf("%d", &n);
+	int n = 0;
+	do
+	{
+	START:;
+		if (scanf("%d", &n) != 1)
+		{
+			char pom[20];
+			fgets(pom, 20, stdin);
+			printf("Nepoznata komanda.\n");
+			goto START;
+		}
+		else if (n > 4 || n < 1)
+			printf("Nepoznata komanda.\n");
+	} while (n < 1 || n>4);
 	status[n - 1] = 0;
 	FILE *dat;
 	if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci

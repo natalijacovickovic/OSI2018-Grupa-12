@@ -1,9 +1,8 @@
 #ifndef NAMJESTANJE_H_INCLUDED
 #define NAMJESTANJE_H_INCLUDED
-#include<stdio.h>
+#include "Libraries.h"
 
-extern int dobijeno;
-extern int izgubljeno;
+
 
 void upisiDobijeno(int n)
 {
@@ -28,7 +27,7 @@ void upisiIzgubljeno(int n)
 int provjera()
 {
 
-    int n=((40*dobijeno)/100)+dobijeno;
+    int n=((40*brojBodova)/100)+brojBodova;
     if(izgubljeno<n)
         return 0;
     else
