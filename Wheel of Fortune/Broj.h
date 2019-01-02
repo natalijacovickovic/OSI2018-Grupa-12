@@ -9,7 +9,7 @@ void startBroj()
 {
 	int dozvoljeno = provjera(); //maksimalan broj bodova koje moze dobiti
 	int manji = 0, veci = 0;
-	int niz[5] = { 0 };
+	int niz[6] = { 0 };
 	int n = rand() % 101;
 	int i = 0, broj;
 	//printf("%d\n", n);
