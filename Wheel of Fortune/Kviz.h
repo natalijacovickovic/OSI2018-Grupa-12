@@ -127,8 +127,7 @@ void startKviz()
 			free(kviz[i].odgovori);
 		}
 		printf("Imate ukupno %d bodova\n", brojBodova);
-		printf("Pritisnite taster Enter za povratak na glavni meni.\n");
-		getchar();
+		printOut();
 		system("cls"); // cistimo konzolu
 }
 
