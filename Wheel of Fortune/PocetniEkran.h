@@ -17,6 +17,7 @@ int meni() // pocetni meni gdje korisnik bira opcije
 	if (!uslovKorisnika)
 		provjeraKorisnika();
 	printPocetni();
+        printf("Bodovi: %d\n", brojBodova); 
 	printf("1.Igraj igru\n");
 	printf("2.Unesi kljuc\n");
 	printf("3.Prikaz rezultata\n");
