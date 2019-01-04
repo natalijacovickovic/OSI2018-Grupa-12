@@ -87,9 +87,6 @@ void startKviz()
 				}
 				else if (m > 3 || m < 1)
 					printf("Pogresan unos, pokusajte ponovo.\n");
-				else
-					break;
-
 			} while (m < 1 || m>3);
 
 			if (strcmp(kviz[niz[j]].tacanOdgovor, kviz[niz[j]].odgovori[m - 1]) == 0)

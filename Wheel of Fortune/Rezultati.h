@@ -226,8 +226,23 @@ void cvs() // cuvanje rezultata u .csv fajlu
 	 printf("2. Kviz\n");
 	 printf("3. Loto\n");
 	 printf("4. BlackJack\n");
-	 int n;
-	 scanf("%d", &n);
+	 printf("0. Povratak na glavni meni\n");
+ LABEL:;
+	 int n = 0;
+	 if (scanf("%d", &n) != 1)
+	 {
+		 char pom[20];
+		 fgets(pom, 20, stdin);
+		 printf("Pogresan unos. Pokusajte ponovo.\n");
+		 goto LABEL;
+	 }
+	 if (n < 0 || n>4)
+	 {
+		 printf("Nepoznata komanda. Pokusajte ponovo.\n");
+		 goto LABEL;
+	 }
+	 if (n == 0)
+		 return;
 	 ispisRezultata(n);
 	 printOut();
 }

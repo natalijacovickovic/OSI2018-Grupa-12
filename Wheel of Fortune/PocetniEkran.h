@@ -195,16 +195,31 @@ void igrajIgru() // meni gdje igrac bira igru
 	printf("2. Kviz\n");
 	printf("3. Loto\n");
 	printf("4. BlackJack\n");
-	int n;
-	scanf("%d", &n);
+	printf("0. Povratak na glavni meni\n");
+START:;
+	int n = 0;
+	if (scanf("%d", &n) != 1)
+	{
+		char pom[20];
+		fgets(pom, 20, stdin);
+		printf("Pogresan unos. Pokusajte ponovo.\n");
+		goto START;
+	}
 	if (n == 1)
 		prva();
 	else if (n == 2)
 		druga();
 	else if (n == 3)
 		treca();
-	else
+	else if (n == 4)
 		cetvrta();
+	else if (n == 0)
+		return;
+	else
+	{
+		printf("Nepoznata komanda. Pokusajte ponovo.\n");
+		goto START;
+	}
 }
 
 void countdown1() // odbrojavanje za 1. igru

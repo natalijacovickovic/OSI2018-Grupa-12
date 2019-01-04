@@ -32,6 +32,7 @@ void otkazi()
 	printf("2. Kviz\n");
 	printf("3. Loto\n");
 	printf("4. BlackJack\n");
+	printf("0. Povratak na glavni meni\n");
 	int n = 0;
 	do
 	{
@@ -43,8 +44,10 @@ void otkazi()
 			printf("Nepoznata komanda.\n");
 			goto START;
 		}
-		else if (n > 4 || n < 1)
+		else if (n > 4 || n < 0)
 			printf("Nepoznata komanda.\n");
+		else if (n == 0)
+			return;
 	} while (n < 1 || n>4);
 	status[n - 1] = 0;
 	FILE *dat;

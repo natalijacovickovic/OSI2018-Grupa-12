@@ -11,13 +11,20 @@ void otkljucaj()
 	system("cls");
 	FILE *dat;
 	char* kljuc = (char*)malloc(22);
-	printf("Unesite kljuc!\n");
+	printf("Unesite kljuc: (ili unesite 0 za povratak na glavni meni)\n");
 LABEL:;
 	do
 	{
 		scanf("%s", kljuc);
+		if (!strcmp(kljuc, "0"))
+		{
+			free(kljuc);
+			return;
+		}
 		if (strlen(kljuc) != 19)
-			printf("Greska. Pokusajte ponovo\n");
+		{
+			printf("Greska. Pokusajte ponovo ili unesite 0 za povratak na glavni meni.\n");
+		}
 	} while (strlen(kljuc) != 19);
 	strcat(kljuc, "\n");
 	char **kljucevi = (char**)malloc(8 * sizeof(char*));
