@@ -14,6 +14,7 @@ void startBroj()
 	int i = 0, broj;
 	//printf("%d\n", n);
 	printf("Pogodite zamisljen broj!\n");
+	//getchar();
 	niz[0] = n;
 	int donja = 0, gornja = 100;
 
@@ -23,22 +24,28 @@ void startBroj()
 		printf("%d.pokusaj: ", i + 1);
 		do
 		{
-			if (scanf("%d", &broj) != 1)
+		START:;
+			int input;
+			char buffer[20];
+			if (fgets(buffer, 20, stdin) != NULL)
 			{
-				char pom[20];
-				fgets(pom, 20, stdin);
-				printf("Pogresan unos, pokusajte ponovo.\n");
-				goto LABEL;
+				char *chk;
+				input = (int)strtol(buffer, &chk, 10);
+				if (!isspace(*chk) && *chk != 0)
+				{
+					printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
+					goto START;
+				}
 			}
-			else if (broj < 0 || broj>101)
+			if (input < 0 || input>100)
 			{
-				printf("Pogresan unos, pokusajte ponovo.\n");
-				goto LABEL;
+				printf("Unijeli ste broj van granica. Pokusajte ponovo.\n");
+				goto START;
 			}
-			else
-				break;
-
-		} while (broj < 0 || broj>101);
+			broj = input;
+			break;
+		} while (1);
+		
 		niz[i + 1] = broj;
 		if (i == 4 || broj == n)
 			break;
@@ -187,7 +194,8 @@ void startBroj()
 	upisiBodove(brojBodova);
 	dobijeno += bodovi;
 	upisiDobijeno(dobijeno);
-	printOut();
+	printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+	getchar();
 	system("cls");
 	return;
 

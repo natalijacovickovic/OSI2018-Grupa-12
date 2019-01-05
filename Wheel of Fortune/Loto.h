@@ -16,43 +16,42 @@ void startLoto()
 	shuffle(sviBrojevi, 46);
 	int korisnikoviBrojevi[7] = { 0 };
 	printf("Unesite 7 brojeva (od 0 do 45): ");
-	for (i = 0; i < 7; i++) // ogranicenje unosa samo na brojeve u odgovarajucem opsegu
+	//getchar();
+	int k = 0;
+	do // ogranicenje unosa
 	{
-		do
+	START:;
+		int input;
+		char buffer[20];
+		if (fgets(buffer, 20, stdin) != NULL)
 		{
-			if (scanf("%d", &korisnikoviBrojevi[i]) != 1)
+			char *chk;
+			input = (int)strtol(buffer, &chk, 10);
+			if (!isspace(*chk) && *chk != 0)
 			{
-				char pom[20];
-				fgets(pom, 20, stdin);
-				printf("Pogresan unos, pokusajte ponovo.\n");
-				int uslov = 0, j;
-				for (j = 0; j < i; j++)
-					if (korisnikoviBrojevi[j] == korisnikoviBrojevi[i])
-						uslov = 1;
-				if (uslov)
-					i--;
+				printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
+				goto START;
 			}
-			else if (korisnikoviBrojevi[i] > 45 || korisnikoviBrojevi[i] < 0)
-				printf("Pogresan unos, pokusajte ponovo.\n");
-			else if (korisnikoviBrojevi[i] < 46 || korisnikoviBrojevi[i] > -1)
+		}
+		if (input < 0 || input>45)
+		{
+			printf("Broj je van opsega. Pokusajte ponovo.\n");
+			goto START;
+		}
+		for (int j = 0; j < k; j++)
+		{
+			if (korisnikoviBrojevi[j] == input)
 			{
-				int uslov = 0;
-				int j;
-				for (j = 0; j < i; j++)
-					if (korisnikoviBrojevi[j] == korisnikoviBrojevi[i])
-						uslov = 1;
-				if (uslov)
-				{
-					printf("Vec ste unijeli dati broj.\n");
-					i--;
-				}
+				printf("Vec ste unijeli dati broj. Pokusajte ponovo.\n");
+				goto START;
 			}
-			else
-				break;
+		}
+		korisnikoviBrojevi[k] = input;
+		k++;
+	} while (k < 7);
 
-		} while (korisnikoviBrojevi[i] < 0 || korisnikoviBrojevi[i]>45);
-	}
 	printf("\n");
+	system("cls");
 	printf("Vasi brojevi su: ");
 	int z;
 	for (z = 0; z < 7; z++)
@@ -89,12 +88,19 @@ void startLoto()
 		}
 
 	} while (brojac < 20);
+	if (brojPogodjenih == 0)
+	{
+		printf("\nPogodili ste 0 brojeva i osvojili 0 bodova.\n ");
+		goto END;
+	}
 	printf("\nPogodili ste %d %s i osvojili %d bodova.\n", brojPogodjenih, brojPogodjenih == 1 ? "broj" : (brojPogodjenih < 5 ? "broja" : "brojeva"), bodovi);
+END:;
 	upisiBodoveudat(bodovi, 3);
 	brojBodova += bodovi;
 	printf("Imate ukupno %d bodova.\n", brojBodova);
 	upisiBodove(brojBodova);
-	printOut();
+	printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+	getchar();
 	system("cls");
 }
 

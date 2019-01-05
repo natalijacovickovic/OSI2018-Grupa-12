@@ -68,7 +68,7 @@ void startKviz()
 			niz[j] = j;
 		int n = 16;
 		shuffle(niz, n); // mijesanje niza pitanja
-
+		//getchar();
 		for (j = 0; j < 5; j++)
 		{
 			getPitanje(niz[j], kviz);
@@ -78,16 +78,26 @@ void startKviz()
 			do // ogranicenje unosa
 			{
 			START:;
-				if (scanf("%d", &m) != 1)
+				int input;
+				char buffer[20];
+				if (fgets(buffer, 20, stdin) != NULL)
 				{
-					char pom[20];
-					fgets(pom, 20, stdin);
-					printf("Pogresan unos, pokusajte ponovo.\n");
+					char *chk;
+					input = (int)strtol(buffer, &chk, 10);
+					if (!isspace(*chk) && *chk != 0)
+					{
+						printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
+						goto START;
+					}
+				}
+				if (input < 1 || input>3)
+				{
+					printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
 					goto START;
 				}
-				else if (m > 3 || m < 1)
-					printf("Pogresan unos, pokusajte ponovo.\n");
-			} while (m < 1 || m>3);
+				m = input;
+				break;
+			} while (1);
 
 			if (strcmp(kviz[niz[j]].tacanOdgovor, kviz[niz[j]].odgovori[m - 1]) == 0)
 			{
@@ -124,7 +134,8 @@ void startKviz()
 			free(kviz[i].odgovori);
 		}
 		printf("Imate ukupno %d bodova\n", brojBodova);
-		printOut();
+		printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+		getchar();
 		system("cls"); // cistimo konzolu
 }
 

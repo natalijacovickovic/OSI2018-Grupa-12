@@ -26,20 +26,31 @@ int meni() // pocetni meni gdje korisnik bira opcije
 	printf("6.Uputstvo\n");
 	printf("7.Otkazi igru\n");
 	printf("8.Izlaz\n");
+	//getchar();
 	int n = 0;
-	do
+	do // ogranicenje unosa
 	{
 	START:;
-		if (scanf("%d", &n) != 1)
+		int input;
+		char buffer[20];
+		if (fgets(buffer, 20, stdin) != NULL)
 		{
-			char pom[20];
-			fgets(pom, 20, stdin);
-			printf("Pogresan unos. Pokusajte ponovo.\n");
+			char *chk;
+			input = (int)strtol(buffer, &chk, 10);
+			if (!isspace(*chk) && *chk != 0)
+			{
+				printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
+				goto START;
+			}
+		}
+		if (input < 0 || input>8)
+		{
+			printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
 			goto START;
 		}
-		else if (n > 8 || n<1)
-			printf("Nepoznata komanda.\n");
-	} while (n < 1 || n>8);
+		n = input;
+		break;
+	} while (1);
 	return n;
 }
 
@@ -74,7 +85,8 @@ void prva() // provjera i pokretanje 1. igre
 	else
 	{
 		printf("Niste otkljucali igru.\n");
-		printOut();
+		printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+		getchar();
 		system("cls");
 		return;
 	}
@@ -111,7 +123,8 @@ void druga() // // provjera i pokretanje 2. igre
 	else
 	{
 		printf("Niste otkljucali igru.\n");
-		printOut();
+		printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+		getchar();
 		system("cls");
 		return;
 	}
@@ -156,7 +169,8 @@ void treca() // // provjera i pokretanje 3. igre
 	else
 	{
 		printf("Niste otkljucali igru.\n");
-		printOut();
+		printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+		getchar();
 		system("cls");
 		return;
 	}
@@ -183,7 +197,8 @@ void cetvrta() // provjera i pokretanje 4. igre
 	else
 	{
 		printf("Niste otkljucali igru.\n");
-		printOut();
+		printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+		getchar();
 		system("cls");
 		return;
 	}
@@ -197,15 +212,31 @@ void igrajIgru() // meni gdje igrac bira igru
 	printf("3. Loto\n");
 	printf("4. BlackJack\n");
 	printf("0. Povratak na glavni meni\n");
-START:;
 	int n = 0;
-	if (scanf("%d", &n) != 1)
+	do // ogranicenje unosa
 	{
-		char pom[20];
-		fgets(pom, 20, stdin);
-		printf("Pogresan unos. Pokusajte ponovo.\n");
-		goto START;
-	}
+	START:;
+		int input;
+		char buffer[20];
+		if (fgets(buffer, 20, stdin) != NULL)
+		{
+			char *chk;
+			input = (int)strtol(buffer, &chk, 10);
+			if (!isspace(*chk) && *chk != 0)
+			{
+				printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
+				goto START;
+			}
+		}
+		if (input < 0 || input>4)
+		{
+			printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
+			goto START;
+		}
+		n = input;
+		break;
+	} while (1);
+
 	if (n == 1)
 		prva();
 	else if (n == 2)
@@ -477,7 +508,8 @@ void uputstva()
 	printf("Da biste igrali 3. i 4. igru, potrebno je uloziti 100 bodova.\n");
 	printf("Za ostale igre nije potreban ulog.\n");
 	printf("Ako zelite otkljucati igru, izaberite opciju 2.Unesi kljuc.\n");
-	printOut();
+	printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+	getchar();
 	system("cls");
 	return;
 }

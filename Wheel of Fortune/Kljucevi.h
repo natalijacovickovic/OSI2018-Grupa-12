@@ -19,6 +19,7 @@ LABEL:;
 		if (!strcmp(kljuc, "0"))
 		{
 			free(kljuc);
+			getchar();
 			return;
 		}
 		if (strlen(kljuc) != 19)
@@ -156,6 +157,7 @@ void prikaziKljuceve() // prikaz svih kljuceva i njihovog trajanja
 	if (dat = fopen("Kljucevi2.txt", "r"))
 		while ((c = fgetc(dat)) != EOF)
 			printf("%c", c);
-	printOut();
+	printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+	getchar();
 }
 

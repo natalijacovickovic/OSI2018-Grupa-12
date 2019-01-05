@@ -218,7 +218,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 }
 
 
- meniRezultata()
+ void meniRezultata()
 {
 	 system("cls");
 	 printf("Izaberite za koju igru zelite vidjeti rezultate.\n");
@@ -227,23 +227,34 @@ void cvs() // cuvanje rezultata u .csv fajlu
 	 printf("3. Loto\n");
 	 printf("4. BlackJack\n");
 	 printf("0. Povratak na glavni meni\n");
- LABEL:;
-	 int n = 0;
-	 if (scanf("%d", &n) != 1)
+	 int n;
+	 do // ogranicenje unosa
 	 {
-		 char pom[20];
-		 fgets(pom, 20, stdin);
-		 printf("Pogresan unos. Pokusajte ponovo.\n");
-		 goto LABEL;
-	 }
-	 if (n < 0 || n>4)
-	 {
-		 printf("Nepoznata komanda. Pokusajte ponovo.\n");
-		 goto LABEL;
-	 }
+	 START:;
+		 int input;
+		 char buffer[20];
+		 if (fgets(buffer, 20, stdin) != NULL)
+		 {
+			 char *chk;
+			 input = (int)strtol(buffer, &chk, 10);
+			 if (!isspace(*chk) && *chk != 0)
+			 {
+				 printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
+				 goto START;
+			 }
+		 }
+		 if (input < 0 || input>4)
+		 {
+			 printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
+			 goto START;
+		 }
+		 n = input;
+		 break;
+	 } while (1);
 	 if (n == 0)
 		 return;
 	 ispisRezultata(n);
-	 printOut();
+	 printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+	 getchar();
 }
 
