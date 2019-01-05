@@ -34,21 +34,29 @@ void otkazi()
 	printf("4. BlackJack\n");
 	printf("0. Povratak na glavni meni\n");
 	int n = 0;
-	do
+	do // ogranicenje unosa
 	{
 	START:;
-		if (scanf("%d", &n) != 1)
+		int input;
+		char buffer[20];
+		if (fgets(buffer, 20, stdin) != NULL)
 		{
-			char pom[20];
-			fgets(pom, 20, stdin);
-			printf("Nepoznata komanda.\n");
+			char *chk;
+			input = (int)strtol(buffer, &chk, 10);
+			if (!isspace(*chk) && *chk != 0)
+			{
+				printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
+				goto START;
+			}
+		}
+		if (input < 0 || input>4)
+		{
+			printf("Unesena vrijednost nije validna. Pokusajte ponovo.\n");
 			goto START;
 		}
-		else if (n > 4 || n < 0)
-			printf("Nepoznata komanda.\n");
-		else if (n == 0)
-			return;
-	} while (n < 1 || n>4);
+		n = input;
+		break;
+	} while (1);
 	status[n - 1] = 0;
 	FILE *dat;
 	if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
@@ -58,5 +66,6 @@ void otkazi()
 		fclose(dat);
 	}
 	printf("Uspjesno ste otkazali %d. igru\n", n);
-	printOut();
+	printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+	getchar();
 }
