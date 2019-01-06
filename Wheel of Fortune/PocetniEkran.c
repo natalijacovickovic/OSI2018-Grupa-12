@@ -9,7 +9,7 @@ int meni() // pocetni meni gdje korisnik bira opcije
 	if (!uslovKorisnika)
 		provjeraKorisnika();
 	printPocetni();
-    printf("Bodovi: %d\n", brojBodova); 
+    printf("Bodovi: %d\n", brojBodova);
 	printf("1.Igraj igru\n");
 	printf("2.Unesi kljuc\n");
 	printf("3.Prikaz rezultata\n");
@@ -56,7 +56,9 @@ void prva() // provjera i pokretanje 1. igre
 			int z;
 			FILE *dat;
 			printf("Kljuc je istekao.\n");
-			printOut();
+			//printOut();
+			printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+			getchar();
 			status[0] = 0;
 			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
 			{
@@ -94,7 +96,9 @@ void druga() // // provjera i pokretanje 2. igre
 			printf("Kljuc je istekao.\n");
 			status[1] = 0;
 			FILE *dat;
-			printOut();
+			//printOut();
+			printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+			getchar();
 			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
 			{
 				int z;
@@ -130,7 +134,9 @@ void treca() // // provjera i pokretanje 3. igre
 		{
 			printf("Kljuc je istekao.\n");
 			status[2] = 0;
-			printOut();
+			//printOut();
+			printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+			getchar();
 			FILE *dat;
 			if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
 			{
@@ -146,7 +152,8 @@ void treca() // // provjera i pokretanje 3. igre
 			if (brojBodova < 100)
 			{
 				printf("Nemate dovoljno bodova da igrate ovu igru.\n");
-				printOut();
+				printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+		        getchar();
 				return;
 			}
 			izgubljeno += 100;
@@ -175,7 +182,8 @@ void cetvrta() // provjera i pokretanje 4. igre
 		if (brojBodova < 100)
 		{
 			printf("Nemate dovoljno bodova da igrate ovu igru.\n");
-			printOut();
+			printf("Pritisnite taster Enter za povratak na glavni meni.\n");
+		    getchar();
 			return;
 		}
 		izgubljeno += 100;
