@@ -165,7 +165,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 	PODATAK niz[40] = { 0 };
 	FILE *dat;
 	char *pom = (char*)malloc(500);
-	
+
 	for (j = 0; j < 4; j++)
 	{
 		char naziv[20] = "Rezultati";
@@ -193,7 +193,7 @@ void cvs() // cuvanje rezultata u .csv fajlu
 		fprintf(dat, "igra, bodovi, datum\n");
 		for (j = 0; j < 4; j++)
 		{
-			
+
 			for (i = j * 10; (i < (j * 10) + 10) && niz[i].vrijeme.tm_mday!=0; i++)
 			{
 				fprintf(dat, "%s,", ime[j]);
@@ -206,7 +206,9 @@ void cvs() // cuvanje rezultata u .csv fajlu
 	free(pom);
 	system("cls");
 	printf("Uspjesno ste sacuvali rezultate.\n");
-	printOut();
+	//printOut();
+	printf("Pritisnite taster Enter za povratak u glavni meni.\n");
+	getchar();
 
 }
 
