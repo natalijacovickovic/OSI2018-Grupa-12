@@ -12,7 +12,7 @@ typedef struct Card
 	int numOfCards;
 } CARD;
 
-int startBlackJack();
+int startBlackJack(); 
 void printWelcome();
 void printOptionsHelp();
 int printOptions();
