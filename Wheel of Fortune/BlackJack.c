@@ -5,6 +5,7 @@ int startBlackJack()
 {
 	//printWelcome();
 	CARD dealerCards;
+	int maksbodovi = provjera();
 	CARD playerCards;
 	int cardsCheck = 0;
 	cardsCheck = dealCards(&dealerCards, &playerCards);
@@ -124,6 +125,14 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 	playerCards->numOfCards++;
 	playerCards->sumOfCards += playerCards->cards[1];
 
+	if (maksbodovi < 50)
+	{   
+		if ((playerCards->sumOfCards < 22) && (dealerCards->sumOfCards < playerCards->sumOfCards))
+			dealerCards->cards[1] = 20 - dealerCards->cards[0];
+		else if (playerCards->sumOfCards == 21)
+			dealerCards->cards[1] = 21 - dealerCards->cards[0];
+	}
+	
 	printCards(*dealerCards, *playerCards);
 
 	if (dealerCards->sumOfCards == 21 && playerCards->sumOfCards == 21)

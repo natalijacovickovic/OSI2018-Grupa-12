@@ -2,6 +2,7 @@
 #define BLACKJACK_H
 #include "Libraries.h"
 #include "Rezultati.h"
+#include "Namjestanje.h"
 
 typedef struct Card
 {
