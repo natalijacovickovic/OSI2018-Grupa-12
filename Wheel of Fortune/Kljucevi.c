@@ -153,7 +153,7 @@ void prikaziKljuceve() // prikaz svih kljuceva i njihovog trajanja
 	FILE *dat;
 	char c;
 	if (dat = fopen("Kljucevi2.txt", "r"))
-		while ((c = fgetc(dat)) != EOF)
+	  while ((c = fgetc(dat)) != EOF)
 			printf("%c", c);
 	printf("Pritisnite taster Enter za povratak na glavni meni.\n");
 	getchar();
