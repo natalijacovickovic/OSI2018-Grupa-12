@@ -76,7 +76,7 @@ void printWelcome()
 {
 	printf("****************************\n");
 	printf("*  DOBRODOSLI U BLACKJACK  *\n");
-	printf("*       PUNO SRECE :)	   *\n");
+	printf("*       SRECNO! :)	   *\n");
 	printf("* Ostalo vam je %d poena  *\n", brojBodova);
 	printf("****************************\n");
 }
@@ -84,15 +84,15 @@ void printWelcome()
 void printOptionsHelp()
 {
 	printf("\n~~~~~~~~~~~~~~~~~~~~~~~~\n");
-	printf("Unesite komandu: \n");
-	printf("Da povucete kartu...............[1]\n");
-	printf("Ostanite na trenutnom...........[2]\n");
+	printf("Izaberite opciju: \n");
+	printf("Povuci jos jednu kartu....................[1]\n");
+	printf("Dalje...........................[2]\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 {
-	printf("Dijeljenje pocinje \n");
+	printf("Dijeljenje pocinje... \n");
 	Sleep(1200);
 	//dealerCards->cards = (int *)malloc(2 * sizeof(int));              //2 karte su minimalne
 	dealerCards->numOfCards = dealerCards->sumOfCards = 0;
@@ -139,7 +139,7 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 	{
 		printf("Protivnikove karte:\n");
 		printf("%d. %d \n%d. %d\n", 1, dealerCards->cards[0], 2, dealerCards->cards[1]);
-		printf("Izjednaceni ste! \n");
+		printf("I vi i protivnik imate BLACKJACK! \n");
 		brojBodova += 100;
 		upisiBodoveudat(100, 4);
 		upisiBodove(brojBodova);
@@ -151,7 +151,7 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 	{
 		printf("Protivnikove karte:\n");
 		printf("%d. %d \n%d. %d\n", 1, dealerCards->cards[0], 2, dealerCards->cards[1]);
-		printf("\nPrekoracili ste limit, nazalost vi gubite.\n");
+		printf("\n Zbir karata je veci od 21. IZGUBILI STE! \n");
 		//oduzimanje poena -50...
 		brojBodova -= 50;
 		upisiBodoveudat(-50, 4);
@@ -200,7 +200,7 @@ int printOptions()      //ispis opcija hit or stand
 	input[0] = '0';
 	input[1] = '\0';
 	int result = 0;
-	printf("Unesite komandu: ");
+	printf("Izaberite opciju: ");
 	while (result == 0)
 	{
 		scanf("%s", input);
@@ -243,7 +243,7 @@ int dealerCardsCheck(CARD cards, CARD player)    //provjera dealerovih karata
 {
 	if (cards.sumOfCards > 21)
 	{
-		printf("\nProtivnik je prekoracio limit, pobjedili ste!\n");
+		printf("\n Zbir protivnikovih karata je veci od 21. CESTITAMO, POBIJEDILI STE!\n");
 		brojBodova += 150;
 		upisiBodoveudat(150, 4);
 		upisiBodove(brojBodova);
@@ -253,7 +253,7 @@ int dealerCardsCheck(CARD cards, CARD player)    //provjera dealerovih karata
 	if (cards.sumOfCards == 21 && player.sumOfCards != 21)
 	{
 		//stand = 1;
-		printf("\nNazalost, protivnik je dobio BlackJack - izgubili ste.\n");
+		printf("\n Protivnik ima BLACKJACK. IZGUBILI STE! \n");
 		upisiBodoveudat(0, 4);
 		printf("Imate %d bodova.\n", brojBodova);
 		return 1;
@@ -267,7 +267,7 @@ int winnerCheck(CARD dealerCards, CARD playerCards)  //provjera pobjednika
 {
 	if (playerCards.sumOfCards > dealerCards.sumOfCards)
 	{
-		printf("\nCestitamo pobjedili ste!\n");
+		printf("\nCESTITAMO, POBIJEDILI STE!\n");
 		//dodjela poena....
 		brojBodova += 150;
 		upisiBodoveudat(150, 4);
@@ -277,7 +277,7 @@ int winnerCheck(CARD dealerCards, CARD playerCards)  //provjera pobjednika
 	}
 	if (playerCards.sumOfCards < dealerCards.sumOfCards)
 	{
-		printf("\nNazalost, izgubili ste.\n");
+		printf("\n IZGUBILI STE!\n");
 		//oduzimanje poena....
 		brojBodova -= 50;
 		upisiBodoveudat(-50, 4);
@@ -288,7 +288,7 @@ int winnerCheck(CARD dealerCards, CARD playerCards)  //provjera pobjednika
 	//if (playerCards.sumOfCards == dealerCards.sumOfCards)
 	else
 	{
-		printf("Izjednaceni ste!\n");
+		printf("Vi i protivnik imate isti zbir karata!\n");
 		//dobija nazad 75
 		brojBodova += 75;
 		upisiBodoveudat(75, 4);
