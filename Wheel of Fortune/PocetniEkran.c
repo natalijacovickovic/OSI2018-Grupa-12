@@ -1,11 +1,15 @@
 #include "PocetniEkran.h"
-
+#include "Kljucevi.h"
+#include "Broj.h"
+#include "Kviz.h"
+#include "Loto.h"
+#include "Blackjack.h"
 int meni() // pocetni meni gdje korisnik bira opcije
 {
 	if (!uslovKorisnika)
 		provjeraKorisnika();
 	printPocetni();
-        printf("Bodovi: %d\n", brojBodova); 
+    printf("Bodovi: %d\n", brojBodova); 
 	printf("1.Igraj igru\n");
 	printf("2.Unesi kljuc\n");
 	printf("3.Prikaz rezultata\n");

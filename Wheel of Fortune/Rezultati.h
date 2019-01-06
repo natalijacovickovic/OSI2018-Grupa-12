@@ -1,4 +1,5 @@
-#pragma once
+#ifndef REZULTATI_H
+#define REZULTATI_H
 #include "Libraries.h"
 
 typedef struct podatak
@@ -14,3 +15,4 @@ void upisiBodoveudat(int broj, int redniBroj); // upisivanje bodova u datoteke
 void ispisRezultata(int brojIgrice); // ispis rezultata na standardni izlaz
 void cvs(); // cuvanje rezultata u .csv fajlu
 void meniRezultata();
+#endif

@@ -1,10 +1,12 @@
-#pragma once
+#ifndef LIBRARIES_H
+#define LIBRARIES_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <Windows.h>
 #include <math.h>
+//#include "Rezultati.h"
 
 
 void shuffle(int *niz, int n);
@@ -18,3 +20,5 @@ extern int uslovKorisnika; // pri povratku na pocetni ekran, provjera da li
 
 void upisiBodove(int bodovi); // cuvanje bodova u datoteci
 void printOut(); // pomocna funkcija za ispis
+
+#endif

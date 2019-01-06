@@ -1,4 +1,4 @@
-#include"Kljucevi.h"
+#include "Kljucevi.h"
 
 int statusIgre(int i) // provjera da li je igra otkljucana
 {

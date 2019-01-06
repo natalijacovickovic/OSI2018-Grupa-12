@@ -7,8 +7,8 @@
 #include "PocetniEkran.h"
 #include "TrajanjeKljuceva.h"
 #include "Rezultati.h"
-#include "Libraries.h"
-
+//#include "Libraries.h"
+ 
 int brojBodova = 0;
 int status[4] = { 0, 0, 0, 0 };
 int brojIgranja = 0;
@@ -46,7 +46,7 @@ int main()
 		fscanf(dat, "%d", &izgubljeno);
 		fclose(dat);
 	}
-	int n;
+	int n; 
 	srand((unsigned int)time(0));
 	do {
 		n = meni();

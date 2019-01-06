@@ -1,4 +1,5 @@
-#pragma once
+#ifndef KVIZ_H
+#define KVIZ_H
 #include "Libraries.h"
 #include "Rezultati.h"
 typedef struct Pitanja
@@ -12,3 +13,4 @@ void getOdgovori(int i, PITANJA *pitanja); // ispisujemo odgovore na standardni 
 PITANJA set(char *string1, char *string2, char *string3, char *string4, char *tacan);
 void startKviz();
 
+#endif

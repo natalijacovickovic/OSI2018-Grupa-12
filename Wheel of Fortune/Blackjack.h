@@ -1,5 +1,7 @@
-#pragma once
+#ifndef BLACKJACK_H
+#define BLACKJACK_H
 #include "Libraries.h"
+#include "Rezultati.h"
 
 typedef struct Card
 {
@@ -21,4 +23,4 @@ int optionCheck(int);
 void hit(CARD *);
 int dealerCardsCheck(CARD, CARD);
 int winnerCheck(CARD, CARD);
-
+#endif

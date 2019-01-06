@@ -54,6 +54,8 @@ void otkazi()
 		n = input;
 		break;
 	} while (1);
+	if (n == 0)
+		return;
 	status[n - 1] = 0;
 	FILE *dat;
 	if (dat = fopen("Status.txt", "w")) // promjena statusa u datoteci
