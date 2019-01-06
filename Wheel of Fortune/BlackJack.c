@@ -94,7 +94,7 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 {
 	printf("Dijeljenje pocinje \n");
 	Sleep(1200);
-	//dealerCards->cards = (int *)malloc(2 * sizeof(int));              //2 karte su minimalne 
+	//dealerCards->cards = (int *)malloc(2 * sizeof(int));              //2 karte su minimalne
 	dealerCards->numOfCards = dealerCards->sumOfCards = 0;
 	//`playerCards->cards = (int *)malloc(2 * sizeof(int));
 	playerCards->sumOfCards = playerCards->numOfCards = 0;
@@ -126,13 +126,13 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 	playerCards->sumOfCards += playerCards->cards[1];
 
 	if (maksbodovi < 50)
-	{   
+	{
 		if ((playerCards->sumOfCards < 22) && (dealerCards->sumOfCards < playerCards->sumOfCards))
 			dealerCards->cards[1] = 20 - dealerCards->cards[0];
 		else if (playerCards->sumOfCards == 21)
 			dealerCards->cards[1] = 21 - dealerCards->cards[0];
 	}
-	
+
 	printCards(*dealerCards, *playerCards);
 
 	if (dealerCards->sumOfCards == 21 && playerCards->sumOfCards == 21)
