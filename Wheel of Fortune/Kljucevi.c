@@ -61,7 +61,7 @@ LABEL:;
 
 	int uslov = 0; // provjera uslova za postojeci kljuc
 	if (dat = fopen("Iskoristeni kljucevi.txt", "a")) // otkljucavanje igre, dodavanje kljuca  u
-	{                                              // iskoristene kljuceve i pamcenje vremena unosa kljuca
+	{                                                 // iskoristene kljuceve i pamcenje vremena unosa kljuca
 		for (int j = 0; j < 8; j++)
 		{
 			if (!strcmp(kljuc, kljucevi[j]))
@@ -153,7 +153,7 @@ void prikaziKljuceve() // prikaz svih kljuceva i njihovog trajanja
 	FILE *dat;
 	char c;
 	if (dat = fopen("Kljucevi2.txt", "r"))
-	  while ((c = fgetc(dat)) != EOF)
+		while ((c = fgetc(dat)) != EOF)
 			printf("%c", c);
 	printf("Pritisnite taster Enter za povratak na glavni meni.\n");
 	getchar();

@@ -34,6 +34,8 @@ int startBlackJack()
 			upisiBodoveudat(-50, 4);
 			brojBodova -= 50;
 			upisiBodove(brojBodova);
+			izgubljeno+=50;
+			upisiIzgubljeno(izgubljeno);
 			printOut();
 			return 0;
 		}
@@ -161,6 +163,8 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 		brojBodova -= 50;
 		upisiBodoveudat(-50, 4);
 		upisiBodove(brojBodova);
+		izgubljeno+=50;
+        upisiIzgubljeno(izgubljeno);
 		printf("Imate %d bodova.\n", brojBodova);
 		return 1;
 	}
@@ -288,6 +292,8 @@ int winnerCheck(CARD dealerCards, CARD playerCards)  //provjera pobjednika
 		upisiBodoveudat(-50, 4);
 		upisiBodove(brojBodova);
 		printf("Imate %d bodova.\n", brojBodova);
+		izgubljeno+=50;
+        upisiIzgubljeno(izgubljeno);
 		return -1;
 	}
 

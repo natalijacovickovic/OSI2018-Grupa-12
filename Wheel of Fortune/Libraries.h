@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #ifndef LIBRARIES_H
 #define LIBRARIES_H
 #include <stdio.h>
