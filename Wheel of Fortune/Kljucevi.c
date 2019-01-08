@@ -61,7 +61,7 @@ LABEL:;
 
 	int uslov = 0; // provjera uslova za postojeci kljuc
 	if (dat = fopen("Iskoristeni kljucevi.txt", "a")) // otkljucavanje igre, dodavanje kljuca  u
-	{                                                 // iskoristene kljuceve i pamcenje vremena unosa kljuca
+	{                                              // iskoristene kljuceve i pamcenje vremena unosa kljuca
 		for (int j = 0; j < 8; j++)
 		{
 			if (!strcmp(kljuc, kljucevi[j]))

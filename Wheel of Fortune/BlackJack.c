@@ -5,7 +5,6 @@ int startBlackJack()
 {
 	//printWelcome();
 	CARD dealerCards;
-	int maksbodovi = provjera();
 	CARD playerCards;
 	int cardsCheck = 0;
 	cardsCheck = dealCards(&dealerCards, &playerCards);
@@ -92,6 +91,7 @@ void printOptionsHelp()
 
 int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 {
+	int maksbodovi = provjera();
 	printf("Dijeljenje pocinje... \n");
 	Sleep(1200);
 	//dealerCards->cards = (int *)malloc(2 * sizeof(int));              //2 karte su minimalne
@@ -125,11 +125,16 @@ int dealCards(CARD *dealerCards, CARD *playerCards) //inicijalne 2 karte
 	playerCards->numOfCards++;
 	playerCards->sumOfCards += playerCards->cards[1];
 
-	if (maksbodovi < 50)
+	if ( maksbodovi < 50)
 	{
 		if ((playerCards->sumOfCards < 22) && (dealerCards->sumOfCards < playerCards->sumOfCards))
 			dealerCards->cards[1] = 20 - dealerCards->cards[0];
 		else if (playerCards->sumOfCards == 21)
+			dealerCards->cards[1] = 21 - dealerCards->cards[0];
+	}
+	if (maksbodovi < 100)
+	{
+		if (playerCards->sumOfCards == 21 && (dealerCards->sumOfCards < playerCards->sumOfCards))
 			dealerCards->cards[1] = 21 - dealerCards->cards[0];
 	}
 
@@ -279,11 +284,21 @@ int winnerCheck(CARD dealerCards, CARD playerCards)  //provjera pobjednika
 	{
 		printf("\n IZGUBILI STE!\n");
 		//oduzimanje poena....
-		brojBodova -= 50;
+		brojBodova -= 50; upisiIzgubljeno(50);
 		upisiBodoveudat(-50, 4);
 		upisiBodove(brojBodova);
 		printf("Imate %d bodova.\n", brojBodova);
 		return -1;
+	}
+
+	if (playerCards.sumOfCards == 21 && dealerCards.sumOfCards < 21)
+	{
+		printf("\n DOBILI STE BLACK JACK! CESTITAMO, POBIJEDILI STE!\n");
+		brojBodova += 200;
+		upisiBodoveudat(200, 4);
+		upisiBodove(brojBodova);
+		printf("Imate %d bodova.\n", brojBodova);
+		return 1;
 	}
 	//if (playerCards.sumOfCards == dealerCards.sumOfCards)
 	else
