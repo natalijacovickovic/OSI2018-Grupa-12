@@ -2,6 +2,7 @@
 #define KVIZ_H
 #include "Libraries.h"
 #include "Rezultati.h"
+#include "Namjestanje.h"
 typedef struct Pitanja
 {
 	char *pitanje;

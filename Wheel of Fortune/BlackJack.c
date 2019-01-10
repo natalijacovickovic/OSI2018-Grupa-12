@@ -86,7 +86,7 @@ void printOptionsHelp()
 {
 	printf("\n~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	printf("Izaberite opciju: \n");
-	printf("Povuci jos jednu kartu....................[1]\n");
+	printf("Povuci jos jednu kartu..........[1]\n");
 	printf("Dalje...........................[2]\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
